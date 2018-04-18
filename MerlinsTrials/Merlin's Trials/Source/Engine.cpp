@@ -313,7 +313,9 @@ void Engine::createShaders() {
 
 	//create vertex shader
 	ID3DBlob* pVS = nullptr;
-	D3DCompileFromFile(
+	ID3DBlob * errBlob = nullptr;
+	HRESULT err;
+	err = D3DCompileFromFile(
 		L"Vertex.hlsl", // filename
 		nullptr,		// optional macros
 		nullptr,		// optional include files
@@ -322,11 +324,14 @@ void Engine::createShaders() {
 		0,				// shader compile options			// here DEBUGGING OPTIONS
 		0,				// effect compile options
 		&pVS,			// double pointer to ID3DBlob		
-		nullptr			// pointer for Error Blob messages.
+		&errBlob			// pointer for Error Blob messages.
 						// how to use the Error blob, see here
 						// https://msdn.microsoft.com/en-us/library/windows/desktop/hh968107(v=vs.85).aspx
 	);
-
+	if (FAILED(err))
+	{
+		
+	}
 	this->device->CreateVertexShader(pVS->GetBufferPointer(), pVS->GetBufferSize(), nullptr, &this->vShader);
 
 	//create input layout (verified using vertex shader)

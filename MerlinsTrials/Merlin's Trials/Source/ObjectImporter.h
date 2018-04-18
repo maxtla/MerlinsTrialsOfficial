@@ -7,7 +7,7 @@ class ObjectImporter
 {
 private:
 	Assimp::Importer importer;
-	void debugString(const LPCWSTR &in_string, const aiReturn &in_param);
+	void debugString(const LPCSTR &in_string, const aiReturn &in_param);
 public:
 
 	ObjectImporter();

@@ -2,7 +2,7 @@
 
 Level::Level()
 {
-	this->fileName = "Obj//TestTri.obj";
+	this->fileName = "TestTri.obj";
 }
 
 Level::~Level()

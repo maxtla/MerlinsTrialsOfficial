@@ -1,5 +1,5 @@
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef GEOMETRY_H
+#define GEOMETRY_H
 
 #include<d3d11.h>
 #include<SimpleMath.h>
@@ -9,7 +9,7 @@
 
 using namespace DirectX::SimpleMath;
 
-class Object {
+class Geometry {
 
 public:
 
@@ -39,7 +39,7 @@ private:
 	std::string difTexPath;
 	std::string normTexPath;
 
-	//Object name
+	//Geometry name
 	std::string name;
 
 	//Count
@@ -59,8 +59,8 @@ private:
 
 public:
 	
-	Object();
-	~Object();
+	Geometry();
+	~Geometry();
 
 	//Get
 	int getVertexCount(void) const;
@@ -91,4 +91,4 @@ public:
 
 };
 
-#endif // !OBJECT_H
+#endif // !Geometry_H

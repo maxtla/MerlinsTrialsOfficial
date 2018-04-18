@@ -6,7 +6,7 @@
 #include<assimp\postprocess.h>
 
 
-void ObjectImporter::debugString(const LPCWSTR &in_string, const aiReturn &in_param)
+void ObjectImporter::debugString(const LPCSTR &in_string, const aiReturn &in_param)
 {
 	if (AI_SUCCESS != in_param)
 	{
@@ -30,7 +30,7 @@ bool ObjectImporter::importModel(const std::string & fname, std::vector<Object>&
 	//if the importer fails to read the specified file it returns NULL == 0
 	if (!nScene)
 	{
-		OutputDebugString(reinterpret_cast<LPCWSTR>(this->importer.GetErrorString()));
+		OutputDebugString(reinterpret_cast<LPCSTR>(this->importer.GetErrorString()));
 		return false;
 	}
 
@@ -96,39 +96,39 @@ bool ObjectImporter::importModel(const std::string & fname, std::vector<Object>&
 	
 		rValue = mtl->Get(AI_MATKEY_SHININESS, nsSpecularExponent);
 		tempO.setSpecExponent(nsSpecularExponent);
-		this->debugString(LPCWSTR("NS failed import"), rValue);
+		this->debugString(LPCSTR("NS failed import"), rValue);
 
-		mtl->Get(AI_MATKEY_OPACITY, dOpacity);
+		rValue = mtl->Get(AI_MATKEY_OPACITY, dOpacity);
 		tempO.setOpacity(dOpacity);
-		this->debugString(LPCWSTR("dOpacity failed import"), rValue);
+		this->debugString(LPCSTR("dOpacity failed import"), rValue);
 
-		mtl->Get(AI_MATKEY_COLOR_DIFFUSE, cColor);
+		rValue = mtl->Get(AI_MATKEY_COLOR_DIFFUSE, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setDiffuse(vec3);
-		this->debugString(LPCWSTR("cDiffuse failed import"), rValue);
+		this->debugString(LPCSTR("cDiffuse failed import"), rValue);
 
-		mtl->Get(AI_MATKEY_COLOR_AMBIENT, cColor);
+		rValue = mtl->Get(AI_MATKEY_COLOR_AMBIENT, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setAmbient(vec3);
-		this->debugString(LPCWSTR("cAmbient failed import"), rValue);
+		this->debugString(LPCSTR("cAmbient failed import"), rValue);
 
-		mtl->Get(AI_MATKEY_COLOR_SPECULAR, cColor);
+		rValue = mtl->Get(AI_MATKEY_COLOR_SPECULAR, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setSpec(vec3);
-		this->debugString(LPCWSTR("cSpecular failed import"), rValue);
+		this->debugString(LPCSTR("cSpecular failed import"), rValue);
 
-		mtl->Get(AI_MATKEY_COLOR_EMISSIVE, cColor);
+		rValue = mtl->Get(AI_MATKEY_COLOR_EMISSIVE, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setEmissive(vec3);
-		this->debugString(LPCWSTR("cEmissive failed import"), rValue);
+		this->debugString(LPCSTR("cEmissive failed import"), rValue);
 
-		mtl->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
+		rValue = mtl->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
 		tempO.setDifTexPath(aiPath.C_Str());
-		this->debugString(LPCWSTR("tPath diffuse failed import"), rValue);
+		this->debugString(LPCSTR("tPath diffuse failed import"), rValue);
 
-		mtl->GetTexture(aiTextureType_NORMALS, 0, &aiPath);
+		rValue = mtl->GetTexture(aiTextureType_NORMALS, 0, &aiPath);
 		tempO.setNormTexPath(aiPath.C_Str());
-		this->debugString(LPCWSTR("tPath normals failed import"), rValue);
+		this->debugString(LPCSTR("tPath normals failed import"), rValue);
 
 		objects.push_back(tempO);
 

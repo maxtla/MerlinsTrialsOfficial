@@ -1,6 +1,6 @@
-#include"Object.h"
+#include"Geometry.h"
 
-Object::Object() {
+Geometry::Geometry() {
 
 	//Shading values
 	this->cDif = Vector3(0.0f, 0.0f, 0.0f);
@@ -31,7 +31,7 @@ Object::Object() {
 
 }
 
-Object::~Object() {
+Geometry::~Geometry() {
 
 	if (this->vBuffer != nullptr) {
 
@@ -48,19 +48,19 @@ Object::~Object() {
 }
 
 //////////////////////MISC/////////////////////////
-void Object::addVertex(Vertex newVertex) {
+void Geometry::addVertex(Vertex newVertex) {
 
 	this->vertices.push_back(newVertex);
 
 }
 
-void Object::addIndex(int newIndex) {
+void Geometry::addIndex(int newIndex) {
 
 	this->indices.push_back(newIndex);
 
 }
 
-void Object::createBuffers(ID3D11Device* device) {
+void Geometry::createBuffers(ID3D11Device* device) {
 
 	//Create Vertex Buffer
 	D3D11_BUFFER_DESC vBufferDesc;
@@ -100,7 +100,7 @@ void Object::createBuffers(ID3D11Device* device) {
 
 }
 
-void Object::writeToFile(void) {
+void Geometry::writeToFile(void) {
 
 	std::ofstream outFile;
 	outFile.open("DataCheck.txt");
@@ -129,104 +129,104 @@ void Object::writeToFile(void) {
 }
 
 ///////////////////////GET///////////////////////////
-int Object::getVertexCount(void) const{
+int Geometry::getVertexCount(void) const{
 
 	return this->vertexCount;
 
 }
 
-int Object::getFaceCount(void) const{
+int Geometry::getFaceCount(void) const{
 
 	return this->faceCount;
 
 }
 
-Matrix Object::getWorld(void) const{
+Matrix Geometry::getWorld(void) const{
 
 	return this->world;
 
 }
 
-ID3D11Buffer* Object::getVBuffer(void) {
+ID3D11Buffer* Geometry::getVBuffer(void) {
 
 	return this->vBuffer;
 
 }
 
-ID3D11Buffer* Object::getIBuffer(void) {
+ID3D11Buffer* Geometry::getIBuffer(void) {
 
 	return this->iBuffer;
 
 }
 
-std::vector<Object::Vertex> Object::getVertices(void) const{
+std::vector<Geometry::Vertex> Geometry::getVertices(void) const{
 
 	return this->vertices;
 
 }
 
 //////////////////////////SET////////////////////////////
-void Object::setDiffuse(Vector3 dif) {
+void Geometry::setDiffuse(Vector3 dif) {
 
 	this->cDif = dif;
 
 }
 
-void Object::setAmbient(Vector3 ambient) {
+void Geometry::setAmbient(Vector3 ambient) {
 
 	this->cAmbient = ambient;
 
 }
 
-void Object::setSpec(Vector3 spec) {
+void Geometry::setSpec(Vector3 spec) {
 
 	this->cSpec = spec;
 
 }
 
-void Object::setEmissive(Vector3 emissive) {
+void Geometry::setEmissive(Vector3 emissive) {
 
 	this->cEmissive = emissive;
 
 }
 
-void Object::setSpecExponent(float specExponent) {
+void Geometry::setSpecExponent(float specExponent) {
 
 	this->specExponent = specExponent;
 
 }
 
-void Object::setOpacity(float opacity) {
+void Geometry::setOpacity(float opacity) {
 
 	this->opacity = opacity;
 
 }
 
-void Object::setName(std::string name) {
+void Geometry::setName(std::string name) {
 
 	this->name = name;
 
 }
 
-void Object::setDifTexPath(std::string path) {
+void Geometry::setDifTexPath(std::string path) {
 
 	this->difTexPath = path;
 
 }
 
-void Object::setNormTexPath(std::string path) {
+void Geometry::setNormTexPath(std::string path) {
 
 	this->normTexPath = path;
 
 }
 
-void Object::setVertexCount(int vertices) {
+void Geometry::setVertexCount(int vertices) {
 
 	this->vertexCount = vertices;
 
 }
 
-void Object::setFaceCount(int faces) {
+void Geometry::setFaceCount(int faces) {
 
 	this->faceCount = faces;
 
