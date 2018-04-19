@@ -40,7 +40,7 @@ private:
 	std::string normTexPath;
 
 	//Geometry name
-	std::string name;
+	std::string meshName;
 
 	//Count
 	int vertexCount;
@@ -69,7 +69,7 @@ public:
 	ID3D11Buffer* getVBuffer(void);
 	ID3D11Buffer* getIBuffer(void);
 	std::vector<Vertex> getVertices(void) const;
-
+	std::string getName() const;
 	//Set
 	void setName(std::string name);
 	void setSpec(Vector3 spec);

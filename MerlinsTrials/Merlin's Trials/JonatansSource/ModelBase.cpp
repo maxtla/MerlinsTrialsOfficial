@@ -1,12 +1,9 @@
 #include "ModelBase.h"
 
-ModelBase::ModelBase()
+ModelBase::ModelBase(const DirectX::XMMATRIX &in_wMatrix, const Geometry* in_Geometry)
 {
-
-}
-
-ModelBase::ModelBase()
-{
+	this->geometry = in_Geometry;
+	this->wMatrix = in_wMatrix;
 }
 
 ModelBase::~ModelBase()
@@ -18,17 +15,8 @@ void ModelBase::setGeometry(const Geometry * in_geometry)
 	this->geometry = in_geometry;
 }
 
-void ModelBase::setBoundingType(const BBType &in_type)
-{
-	this->boundBType = in_type;
-}
-
-const Geometry * ModelBase::getGeometry()
+const Geometry * ModelBase::getGeometry() const
 {
 	return this->geometry;
 }
 
-unsigned int ModelBase::getBoundingBoxType()
-{
-	return this->boundBType;
-}

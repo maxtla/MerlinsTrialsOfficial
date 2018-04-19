@@ -2,7 +2,7 @@
 #define GAME_H
 
 #include"Engine.h"
-#include"Level.h"
+#include"LevelManager.h"
 #include"ObjectImporter.h"
 
 
@@ -12,7 +12,7 @@ private:
 
 	Camera cam;
 	Engine engine;
-	Level level;
+	LevelManager lvlManager;
 	ObjectImporter objImporter;
 
 public:

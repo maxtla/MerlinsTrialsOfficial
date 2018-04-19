@@ -22,10 +22,10 @@ ObjectImporter::~ObjectImporter()
 {
 }
 
-bool ObjectImporter::importModel(const std::string & fname, std::vector<Object>& objects){
+bool ObjectImporter::importModel(const std::string & fname, std::vector<Geometry>& objects){
 
 	//const aiScene* nScene = this->importer.ReadFile(fname, aiProcess_Triangulate);
-	const aiScene* nScene = this->importer.ReadFile(fname, NULL);
+	const aiScene* nScene = this->importer.ReadFile(fname, aiProcess_JoinIdenticalVertices);
 
 	//if the importer fails to read the specified file it returns NULL == 0
 	if (!nScene)
@@ -43,13 +43,13 @@ bool ObjectImporter::importModel(const std::string & fname, std::vector<Object>&
 		aiMaterial* mtl = nScene->mMaterials[mIndx];
 	
 		//Current Object
-		Object tempO;
+		Geometry tempO;
 
 		//Iterate vertex values for mesh and store them
 		for (UINT32 n = 0; n < cMesh->mNumVertices; n++){
 
 			//Vertex struct
-			Object::Vertex vertex;
+			Geometry::Vertex vertex;
 
 			//Copy values
 			vertex.pos.x = cMesh->mVertices[n].x;

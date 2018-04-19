@@ -21,7 +21,7 @@ void Game::init(HINSTANCE* hInst, HWND* wHandle) {
 	this->cam.initDI(hInst, wHandle);
 
 	//Init level
-	this->level.initialize(this->engine.getDevice(), &this->objImporter);
+	this->lvlManager.initLevelManager(this->engine.getDevice(), this->engine.getDeviceContext(), &this->objImporter);
 
 }
 

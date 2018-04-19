@@ -1,7 +1,7 @@
 #ifndef OBJECTIMPORTER_H
 #define OBJECTIMPORTER_H
 #include<assimp\Importer.hpp>
-#include"Object.h"
+#include"Geometry.h"
 
 class ObjectImporter
 {
@@ -13,7 +13,7 @@ public:
 	ObjectImporter();
 	~ObjectImporter();
 
-	bool importModel(const std::string &fname, std::vector<Object>& objects);
+	bool importModel(const std::string &fname, std::vector<Geometry>& objects);
 
 
 };

@@ -15,7 +15,7 @@ Geometry::Geometry() {
 	this->normTexPath = "";
 
 	//Name
-	this->name = "";
+	this->meshName = "";
 
 	//Buffers
 	this->vBuffer = nullptr;
@@ -165,6 +165,11 @@ std::vector<Geometry::Vertex> Geometry::getVertices(void) const{
 
 }
 
+std::string Geometry::getName() const
+{
+	return this->meshName;
+}
+
 //////////////////////////SET////////////////////////////
 void Geometry::setDiffuse(Vector3 dif) {
 
@@ -204,7 +209,7 @@ void Geometry::setOpacity(float opacity) {
 
 void Geometry::setName(std::string name) {
 
-	this->name = name;
+	this->meshName = name;
 
 }
 

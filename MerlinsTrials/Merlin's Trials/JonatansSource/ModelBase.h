@@ -6,22 +6,19 @@
 
 class ModelBase
 {
-public:
-	enum BBType{Sphere = 0, OBB = 1};
-
 protected:
 	DirectX::XMMATRIX wMatrix;
-	unsigned int boundBType;
 	const Geometry * geometry;
 
 
 public:
 	ModelBase();
+	ModelBase(const DirectX::XMMATRIX &in_wMatrix, const Geometry* in_Geometry);
 	virtual ~ModelBase();
 
 	void setGeometry(const Geometry * in_geometry);
-	void setBoundingType(const BBType &in_type);
-	const Geometry* getGeometry();
-	unsigned int getBoundingBoxType();
+	
+	const Geometry* getGeometry() const;
+	unsigned int getBoundingBoxType() const;
 };
 #endif // !MODELBASE_H
