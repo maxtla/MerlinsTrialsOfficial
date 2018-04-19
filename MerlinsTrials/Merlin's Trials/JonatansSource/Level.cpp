@@ -4,6 +4,7 @@ Level::Level()
 {
 	this->fileName = ""; //empty init
 	this->objImporter = nullptr;
+	this->device = nullptr;
 }
 
 Level::~Level()
@@ -13,32 +14,40 @@ Level::~Level()
 	this->fileName.clear();
 }
 
-void Level::createModels()
+void Level::createModel(const std::string &meshName, const int &n)
 {
-	unsigned int walls, terrains, Rock;
 
-	for (UINT32 i = 0; i < meshNames.size(); i++)
+		if (meshName == "Wall")
+		{
+			WallModel wall(this->device, &this->geometryVec[n]);
+			wall.createBuffers();
+			this->wallModels.push_back(wall);
+		}
+		else if (meshName == "Terrain")
+		{
+			TerrainModel terr(this->device, &this->geometryVec[n]);
+			terr.createBuffers();
+			this->terrainModels.push_back(terr);
+		}
+		else if (meshName == "Rock")
+		{
+			ModelBase base(this->device, &this->geometryVec[n]);
+			base.createBuffers();
+			this->miscModels.push_back(base);
+		}
+
+	for (auto var : this->wallModels)
 	{
-		if (this->meshNames[i] == "Wall")
-		{
-
-		}
-		else if (this->meshNames[i] == "Terrain")
-		{
-
-		}
-		else if (this->meshNames[i] == "Rock")
-		{
-
-		}
+		var.createBoundingBox();
 	}
+	
 }
 
-bool Level::initialize(ID3D11Device* in_device, ObjectImporter * importer, const std::string &in_fileName){
-
-
+bool Level::initialize(ID3D11Device* in_device, ObjectImporter * importer, const std::string &in_fileName)
+{
 
 	bool rValue = false;
+	this->device = in_device;
 	this->fileName = in_fileName;
 	this->objImporter = importer;
 
@@ -54,23 +63,12 @@ bool Level::initialize(ID3D11Device* in_device, ObjectImporter * importer, const
 		auto pos = meshName.find('_');
 		if (pos == std::string::npos)
 		{
-			return false;
+			rValue = false;
+			break;
 		}
-		
 		meshName = meshName.substr(0, pos - 1);
-
-		this->meshNames.push_back(meshName);
+		this->createModel(meshName, n);
 	}
-
-
-
-	//Create buffers
-	for (int i = 0; i < this->geometryVec.size(); i++) {
-		
-		this->geometryVec.at(i).createBuffers(in_device);
-	}
-
-
 
 	return rValue;
 }

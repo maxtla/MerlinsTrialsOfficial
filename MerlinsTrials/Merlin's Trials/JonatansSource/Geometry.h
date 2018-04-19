@@ -21,11 +21,13 @@ public:
 
 	};
 
-private:
-
 	//Vertex/Index containers
 	std::vector<Vertex> vertices;
 	std::vector<int> indices;
+
+private:
+
+
 
 	//Shading values
 	Vector3 cDif;
@@ -42,16 +44,8 @@ private:
 	//Geometry name
 	std::string meshName;
 
-	//Count
 	int vertexCount;
 	int faceCount;
-
-	//Buffers
-	ID3D11Buffer* vBuffer;
-	ID3D11Buffer* iBuffer;
-
-	//World Matrix
-	Matrix world;
 
 	//Checks
 	bool isColliding;
@@ -63,31 +57,25 @@ public:
 	~Geometry();
 
 	//Get
-	int getVertexCount(void) const;
-	int getFaceCount(void) const;
-	Matrix getWorld(void) const;
-	ID3D11Buffer* getVBuffer(void);
-	ID3D11Buffer* getIBuffer(void);
-	std::vector<Vertex> getVertices(void) const;
+	int getVertexCount() const;
+	int getFaceCount() const;
 	std::string getName() const;
 	//Set
-	void setName(std::string name);
-	void setSpec(Vector3 spec);
-	void setAmbient(Vector3 ambient);
-	void setEmissive(Vector3 emissive);
-	void setDiffuse(Vector3 dif);
-	void setSpecExponent(float specExponent);
-	void setOpacity(float opacity);
-	void setDifTexPath(std::string path);
-	void setNormTexPath(std::string path);
-	void setVertexCount(int vertices);
-	void setFaceCount(int faces);
-
+	void setName(const std::string &name);
+	void setSpec(const Vector3 &spec);
+	void setAmbient(const Vector3 &ambient);
+	void setEmissive(const Vector3 &emissive);
+	void setDiffuse(const Vector3 &dif);
+	void setSpecExponent(const float &specExponent);
+	void setOpacity(const float &opacity);
+	void setDifTexPath(const std::string &path);
+	void setNormTexPath(const std::string &path);
+	void setVertexCount(const unsigned int &in_count);
+	void setFaceCount(const unsigned int &in_count);
 	//Misc
 	void addVertex(Vertex newVertex);
 	void addIndex(int newIndex);
-	void createBuffers(ID3D11Device* device);
-	void writeToFile(void);
+
 
 };
 
