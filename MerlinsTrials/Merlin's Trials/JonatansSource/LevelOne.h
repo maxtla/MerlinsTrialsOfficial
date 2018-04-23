@@ -8,6 +8,7 @@
 #include"TerrainModel.h"
 #include"Player.h"
 #include"Collision.h"
+#include"Shaders.h"
 
 class LevelOne
 {	
@@ -32,7 +33,7 @@ private:
 	ID3D11Device* device;
 	ID3D11DeviceContext * deviceContext;
 	ID3D11Buffer * constBuffer;
-
+	Shaders shader;
 
 
 	Collision collideManager;

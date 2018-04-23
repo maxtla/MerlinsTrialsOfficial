@@ -98,6 +98,9 @@ void LevelOne::Draw()
 
 	for (int i = 0; i < this->terrainModels.size(); i++)
 	{
+
+		//input layout
+		//topology
 		this->updateMatrices(this->terrainModels[i].getWorld());
 		this->rebindCB();
 
@@ -112,6 +115,8 @@ void LevelOne::Draw()
 	{
 		if (this->wallModels[i].isVisible())
 		{
+			//input layout
+			//topology
 			this->updateMatrices(this->terrainModels[i].getWorld());
 			this->rebindCB();
 
@@ -125,6 +130,8 @@ void LevelOne::Draw()
 
 	for (int i = 0; i < this->miscModels.size(); i++)
 	{
+		//input layout
+		//topology
 		this->updateMatrices(this->terrainModels[i].getWorld());
 		this->rebindCB();
 
