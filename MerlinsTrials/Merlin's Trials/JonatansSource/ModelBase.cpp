@@ -98,6 +98,11 @@ bool ModelBase::createBuffers() {
 	return true;
 }
 
+DirectX::XMMATRIX ModelBase::getWorld() const
+{
+	return this->wMatrix;
+}
+
 ID3D11Buffer* ModelBase::getVBuffer() const
 {
 

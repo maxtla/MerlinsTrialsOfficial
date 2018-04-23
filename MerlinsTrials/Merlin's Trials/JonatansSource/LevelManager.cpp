@@ -15,93 +15,30 @@ LevelManager::~LevelManager()
 	
 }
 
-bool LevelManager::initLevelManager(ID3D11Device * in_device, ID3D11DeviceContext * in_deviceContext, ObjectImporter * in_importer)
+bool LevelManager::initLevelManager(ID3D11Device * in_device, ID3D11DeviceContext * in_deviceContext, ObjectImporter * in_importer, Player* player)
 {
 	bool rValue = false;
 	this->device = in_device;
 	this->deviceContext = in_deviceContext;
 	this->importer = in_importer;
 
-	rValue = this->initiateLevels();
+	rValue = this->levelOne.initialize(this->device, this->importer, PATH_ONE, player);
+
 
 	return rValue;
 }
 
-void LevelManager::updateCurrentLevel(float &dt)
+void LevelManager::updateCurrentLevel()
 {
 	//other stuff
-
 	this->levelOne.collisionCheck();
+	this->levelOne.Draw();
 
-	this->Draw();
 }
 
 void LevelManager::changeLevel()
 {
 	this->cLevel++;
-}
-
-bool LevelManager::initiateLevels()
-{
-	bool rValue = false;
-
-	rValue = this->levelOne.initialize(this->device, this->importer, PATH_ONE);
-
-
-	return true;
-}
-
-void LevelManager::Draw()
-{
-
-	//set shaders
-	//set cbs
-	//set render targets
-	//set vbuffers
-	//set ibuffers
-	//do whatever is needed to draw geometry
-	//this->deviceContext->Draw();
-
-
-
-	switch (this->cDimension)
-	{
-	case NORMAL:
-		//do D3D11 stuff
-		this->deviceContext->IASetVertexBuffers();
-		this->deviceContext->IASetIndexBuffer();
-
-		this->deviceContext->VSSetShader();
-		this->deviceContext->VSSetConstantBuffers();
-
-		this->deviceContext->PSSetShaderResources();
-		this->deviceContext->PSSetConstantBuffers();
-		this->deviceContext->PSSetShader();
-
-		break;
-
-	case OTHER:
-		//do D3D11 stuff
-		//transparenta väggar
-		//rendera inte väggarna
-
-		this->deviceContext->IASetVertexBuffers();
-		this->deviceContext->IASetIndexBuffer();
-
-		this->deviceContext->VSSetShader();
-		this->deviceContext->VSSetConstantBuffers();
-		
-		this->deviceContext->PSSetShaderResources();
-		this->deviceContext->PSSetConstantBuffers();
-		this->deviceContext->PSSetShader();
-
-
-
-		break;
-	}
-
-	//Draw();
-
 }
 
 void LevelManager::callSwapDimension()
@@ -112,7 +49,14 @@ void LevelManager::callSwapDimension()
 	case NORMAL:
 	{
 		this->cDimension = Dimension::OTHER;
-
+		
+		for (int i = 0; i < this->levelOne.wallModels.size(); i++)
+		{
+			if (!this->levelOne.wallModels[i].getBoundryWall())
+			{
+				this->levelOne.wallModels[i].setVisibility(false);
+			}
+		}
 
 		break;
 	}
@@ -120,7 +64,13 @@ void LevelManager::callSwapDimension()
 	{
 		this->cDimension = Dimension::NORMAL;
 
-
+		for (int i = 0; i < this->levelOne.wallModels.size(); i++)
+		{
+			if (!this->levelOne.wallModels[i].getBoundryWall())
+			{
+				this->levelOne.wallModels[i].setVisibility(true);
+			}
+		}
 		break;
 	}
 	}

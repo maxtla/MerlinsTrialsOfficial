@@ -17,6 +17,17 @@ WallModel::~WallModel()
 {
 }
 
+void WallModel::setVisibility(const bool &in_var)
+{
+	this->visible = in_var;
+}
+
+void WallModel::setBoundryWall()
+{
+	this->boundryWall = true;
+}
+
+
 void WallModel::createBoundingBox()
 {
 	XMFLOAT3 *points = new XMFLOAT3[this->geometry->getVertexCount()];
@@ -26,6 +37,16 @@ void WallModel::createBoundingBox()
 	}
 	this->collideBox = CollisionBox(points, this->geometry->getVertexCount());
 	
+}
+
+bool WallModel::isVisible() const
+{
+	return this->visible;
+}
+
+bool WallModel::getBoundryWall() const
+{
+	return this->boundryWall;
 }
 
 CollisionBox WallModel::getBoundingBox() const

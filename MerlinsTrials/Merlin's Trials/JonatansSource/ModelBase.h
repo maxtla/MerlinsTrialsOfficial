@@ -28,6 +28,7 @@ public:
 	void setWorldMatrix(const DirectX::XMMATRIX &in_wMatrix);
 	void setGeometry(const Geometry * in_geometry);
 	
+	DirectX::XMMATRIX getWorld() const;
 	ID3D11Buffer* getVBuffer() const;
 	ID3D11Buffer* getIBuffer() const;
 	const Geometry* getGeometry() const;
