@@ -68,21 +68,22 @@ void LevelManager::Draw()
 	{
 	case NORMAL:
 		//do D3D11 stuff
-
 		this->deviceContext->IASetVertexBuffers();
 		this->deviceContext->IASetIndexBuffer();
 
 		this->deviceContext->VSSetShader();
 		this->deviceContext->VSSetConstantBuffers();
-	
+
 		this->deviceContext->PSSetShaderResources();
 		this->deviceContext->PSSetConstantBuffers();
 		this->deviceContext->PSSetShader();
+
 		break;
 
 	case OTHER:
 		//do D3D11 stuff
 		//transparenta väggar
+		//rendera inte väggarna
 
 		this->deviceContext->IASetVertexBuffers();
 		this->deviceContext->IASetIndexBuffer();
@@ -93,6 +94,9 @@ void LevelManager::Draw()
 		this->deviceContext->PSSetShaderResources();
 		this->deviceContext->PSSetConstantBuffers();
 		this->deviceContext->PSSetShader();
+
+
+
 		break;
 	}
 
@@ -108,11 +112,15 @@ void LevelManager::callSwapDimension()
 	case NORMAL:
 	{
 		this->cDimension = Dimension::OTHER;
+
+
 		break;
 	}
 	case OTHER:
 	{
 		this->cDimension = Dimension::NORMAL;
+
+
 		break;
 	}
 	}

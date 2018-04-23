@@ -16,6 +16,8 @@ protected:
 	ID3D11Device* device;
 
 
+
+
 public:
 	ModelBase();
 	ModelBase(ID3D11Device *in_device);

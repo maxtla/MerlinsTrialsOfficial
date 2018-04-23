@@ -18,7 +18,7 @@ void LevelOne::createModel(const std::string &meshName, const int &n)
 {
 
 
-		if (meshName == "Wall")
+		if (meshName == "Wall" || meshName == "Trunk")
 		{
 			WallModel wall(this->device, &this->geometryVec[n]);
 			wall.createBoundingBox();
@@ -26,13 +26,21 @@ void LevelOne::createModel(const std::string &meshName, const int &n)
 			this->wallModels.push_back(wall);
 			
 		}
+		if (meshName == "WallO")
+		{
+			WallModel wall(this->device, &this->geometryVec[n]);
+			wall.createBoundingBox();
+			wall.createBuffers();
+			this->wallModels.push_back(wall);
+
+		}
 		else if (meshName == "Terrain")
 		{
 			TerrainModel terr(this->device, &this->geometryVec[n]);
 			terr.createBuffers();
 			this->terrainModels.push_back(terr);
 		}
-		else if (meshName == "Rock")
+		else
 		{
 			ModelBase base(this->device, &this->geometryVec[n]);
 			base.createBuffers();

@@ -2,11 +2,12 @@
 #define WALLMODEL_H
 #include"ModelBase.h"
 #include"CollisionBox.h"
+
 class WallModel : public ModelBase
 {
 private:
 	CollisionBox CollideBox; //keeps obb
-
+	bool visible = true;
 
 public:
 	WallModel();

@@ -16,7 +16,7 @@ public:
 	std::vector<TerrainModel> terrainModels;
 	std::vector<WallModel> wallModels;
 	std::vector<ModelBase> miscModels;
-
+	
 private:
 	ObjectImporter* objImporter;
 	std::string fileName;
