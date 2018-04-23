@@ -26,11 +26,11 @@ void Shaders::createVertexPositionColorShader()
 		throw std::runtime_error("ERROR: Could not create input layout for VertexPositionColor shader.");
 	}
 
-	m_effect->Apply(this->gDeviceContext);
+	this->m_effect->Apply(this->gDeviceContext);
 
-	gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	this->gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	gDeviceContext->IASetInputLayout(m_inputLayout.Get());
+	this->gDeviceContext->IASetInputLayout(m_inputLayout.Get());
 	
 }
 
@@ -58,11 +58,11 @@ void Shaders::createVertexPositionNormalShader()
 		throw std::runtime_error("ERROR: Could not create input layout for VertexPositionNormal shader.");
 	}
 
-	m_effect->Apply(this->gDeviceContext);
+	this->m_effect->Apply(this->gDeviceContext);
 
-	gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	this->gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	gDeviceContext->IASetInputLayout(m_inputLayout.Get());
+	this->gDeviceContext->IASetInputLayout(m_inputLayout.Get());
 
 }
 
@@ -90,11 +90,11 @@ void Shaders::createVertexPositionNormalTextureShader()
 		throw std::runtime_error("ERROR: Could not create input layout for VertexPostionNormalTexture shader.");
 	}
 
-	m_effect->Apply(this->gDeviceContext);
+	this->m_effect->Apply(this->gDeviceContext);
 
-	gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+	this->gDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	gDeviceContext->IASetInputLayout(m_inputLayout.Get());
+	this->gDeviceContext->IASetInputLayout(m_inputLayout.Get());
 }
 
 Shaders::Shaders(ID3D11Device* in_gDevice, ID3D11DeviceContext* in_gDeviceContext, ID3D11Buffer* in_vBuffer, ID3D11Buffer* in_iBuffer)
