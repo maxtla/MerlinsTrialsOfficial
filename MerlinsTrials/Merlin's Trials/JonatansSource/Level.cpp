@@ -17,11 +17,14 @@ Level::~Level()
 void Level::createModel(const std::string &meshName, const int &n)
 {
 
+
 		if (meshName == "Wall")
 		{
 			WallModel wall(this->device, &this->geometryVec[n]);
+			wall.createBoundingBox();
 			wall.createBuffers();
 			this->wallModels.push_back(wall);
+			
 		}
 		else if (meshName == "Terrain")
 		{
@@ -35,23 +38,31 @@ void Level::createModel(const std::string &meshName, const int &n)
 			base.createBuffers();
 			this->miscModels.push_back(base);
 		}
-
-	for (auto var : this->wallModels)
-	{
-		var.createBoundingBox();
-	}
 	
+}
+
+bool Level::collisionCheck()
+{
+
+
+
+	return false;
 }
 
 bool Level::initialize(ID3D11Device* in_device, ObjectImporter * importer, const std::string &in_fileName)
 {
 
-	bool rValue = false;
 	this->device = in_device;
 	this->fileName = in_fileName;
 	this->objImporter = importer;
 
+
+}
+
+bool Level::initializeModels()
+{
 	//Load meshes
+	bool rValue = false;
 	rValue = this->objImporter->importModel(this->fileName, this->geometryVec);
 
 	//seperate mesh names
@@ -59,21 +70,20 @@ bool Level::initialize(ID3D11Device* in_device, ObjectImporter * importer, const
 	for (int n = 0; n < this->geometryVec.size(); n++)
 	{
 		meshName = this->geometryVec[n].getName();
-		
+
 		auto pos = meshName.find('_');
 		if (pos == std::string::npos)
 		{
+			OutputDebugString((LPCSTR)"failed to load model name");
 			rValue = false;
 			break;
 		}
 		meshName = meshName.substr(0, pos - 1);
+
+		//create model and bb with current geometry
 		this->createModel(meshName, n);
 	}
 
 	return rValue;
-}
 
-std::vector<Geometry>* Level::getGeometryVec()
-{
-	return &this->geometryVec;
 }

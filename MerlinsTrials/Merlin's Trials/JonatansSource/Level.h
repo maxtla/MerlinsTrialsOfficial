@@ -6,13 +6,12 @@
 #include"Enumerators.h"
 #include"WallModel.h"
 #include"TerrainModel.h"
+#include"Player.h"
 
-using namespace DirectX::SimpleMath;
 
 class Level
 {
 public:
-
 	std::vector<Geometry> geometryVec;
 	std::vector<TerrainModel> terrainModels;
 	std::vector<WallModel> wallModels;
@@ -22,22 +21,23 @@ private:
 	ObjectImporter* objImporter;
 	std::string fileName;
 	ID3D11Device* device;
+	
+	Player* player;
 
-	std::vector<std::string> meshNames;
+	void createModel(const std::string &meshName, const int &i);
+
+protected:
 	sunType currentSun;
 	sunType normalSun;
 	sunType otherSun;
-	
 
-	void createModel(const std::string &meshName, const int &i);
 public:
-
 	Level();
 	~Level();
 
+	bool collisionCheck();
 	bool initialize(ID3D11Device * in_device, ObjectImporter * importer, const std::string &in_fileName);
-	std::vector<Geometry>* getGeometryVec();
-
+	bool initializeModels();
 };
 
 #endif // !LEVEL_H

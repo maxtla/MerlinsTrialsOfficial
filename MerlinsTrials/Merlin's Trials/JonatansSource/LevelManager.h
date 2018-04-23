@@ -1,15 +1,16 @@
 #ifndef LEVELMANAGER_H
 #define LEVELMANAGER_H
-#include"level.h"
+#include"LevelOne.h"
 #include"Enumerators.h"
-
+#include"Player.h"
 
 class LevelManager
 {
 private:
-	std::vector<Level> levelVec;
-	std::vector<std::string> filePathOrderVec;
+	std::vector<Level*> levelVec;
+	LevelOne levelOne;
 
+	Player* player;
 	ID3D11DeviceContext* deviceContext;
 	ID3D11Device* device;
 	ObjectImporter* importer; 
@@ -17,19 +18,17 @@ private:
 	unsigned int cLevel;
 	Dimension cDimension;
 	
-
-	void setBuffers();
-	void swapDimensions();
 	bool initiateLevels();
 
+	void Draw();
 public:
 	LevelManager();
 	~LevelManager();
 
 	void updateCurrentLevel();
-
+	void changeLevel();
 	bool initLevelManager(ID3D11Device* in_device, ID3D11DeviceContext * in_deviceContext, ObjectImporter * in_importer);
-	void callSwapDimension();
+	void callSwapDimension(); //call function on button hit to change draw call
 	void loadNextLevel();
 
 	unsigned int getNumOfLevels() const;
