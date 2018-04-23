@@ -31,5 +31,4 @@ void WallModel::createBoundingBox()
 CollisionBox WallModel::getBoundingBox() const
 {
 	return this->collideBox;
-
 }

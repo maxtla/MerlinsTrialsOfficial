@@ -30,6 +30,9 @@ void WallModel::createBoundingBox()
 
 CollisionBox WallModel::getBoundingBox() const
 {
+<<<<<<< HEAD
+	return this->CollideBox;
+=======
 	return this->collideBox;
-
+>>>>>>> 7ecca4662a6a11aeb345e7d4f63de7e2abb3721c
 }

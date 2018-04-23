@@ -6,9 +6,12 @@
 class WallModel : public ModelBase
 {
 private:
-	CollisionBox collideBox; //keeps obb
+<<<<<<< HEAD
+	CollisionBox CollideBox; //keeps obb
 	bool visible = true;
-
+=======
+	CollisionBox collideBox;
+>>>>>>> 7ecca4662a6a11aeb345e7d4f63de7e2abb3721c
 
 public:
 	WallModel();
