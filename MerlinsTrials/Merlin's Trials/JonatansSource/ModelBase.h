@@ -13,8 +13,7 @@ protected:
 	//Buffers
 	ID3D11Buffer* vBuffer;
 	ID3D11Buffer* iBuffer;
-
-	ID3D11Device * device;
+	ID3D11Device* device;
 
 
 public:

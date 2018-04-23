@@ -1,11 +1,12 @@
 #ifndef WALLMODEL_H
 #define WALLMODEL_H
 #include"ModelBase.h"
-
+#include"CollisionBox.h"
 class WallModel : public ModelBase
 {
 private:
-	DirectX::BoundingBox OBBox;
+	CollisionBox CollideBox; //keeps obb
+
 
 public:
 	WallModel();
@@ -17,7 +18,7 @@ public:
 	void setWorldMatrix(const DirectX::XMMATRIX &in_wMatrix);
 	void createBoundingBox();
 
-	DirectX::BoundingBox getBoundingBox() const;
+	CollisionBox getBoundingBox() const;
 	DirectX::XMMATRIX getWorldMatrix() const;
 	Geometry* getGeometry() const;
 };

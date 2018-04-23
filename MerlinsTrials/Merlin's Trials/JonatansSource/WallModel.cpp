@@ -22,7 +22,7 @@ void WallModel::createBoundingBox()
 	this->geometry->vertices;
 }
 
-DirectX::BoundingBox WallModel::getBoundingBox() const
+CollisionBox WallModel::getBoundingBox() const
 {
-	return this->OBBox;
+	return this->CollideBox;
 }

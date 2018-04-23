@@ -6,12 +6,8 @@
 
 LevelManager::LevelManager()
 {
-	//initiate level vector
-	this->levelVec.reserve(NUM_OF_LEVELS);
-	
 	this->cDimension = Dimension::NORMAL;
 	this->cLevel = 0;
-
 }
 
 LevelManager::~LevelManager()
@@ -31,11 +27,11 @@ bool LevelManager::initLevelManager(ID3D11Device * in_device, ID3D11DeviceContex
 	return rValue;
 }
 
-void LevelManager::updateCurrentLevel()
+void LevelManager::updateCurrentLevel(float &dt)
 {
 	//other stuff
 
-
+	this->levelOne.collisionCheck();
 
 	this->Draw();
 }
@@ -50,7 +46,6 @@ bool LevelManager::initiateLevels()
 	bool rValue = false;
 
 	rValue = this->levelOne.initialize(this->device, this->importer, PATH_ONE);
-	this->levelVec.push_back(&this->levelOne);
 
 
 	return true;
@@ -67,16 +62,42 @@ void LevelManager::Draw()
 	//do whatever is needed to draw geometry
 	//this->deviceContext->Draw();
 
+
+
 	switch (this->cDimension)
 	{
 	case NORMAL:
 		//do D3D11 stuff
+
+		this->deviceContext->IASetVertexBuffers();
+		this->deviceContext->IASetIndexBuffer();
+
+		this->deviceContext->VSSetShader();
+		this->deviceContext->VSSetConstantBuffers();
+	
+		this->deviceContext->PSSetShaderResources();
+		this->deviceContext->PSSetConstantBuffers();
+		this->deviceContext->PSSetShader();
 		break;
 
 	case OTHER:
 		//do D3D11 stuff
+		//transparenta väggar
+
+		this->deviceContext->IASetVertexBuffers();
+		this->deviceContext->IASetIndexBuffer();
+
+		this->deviceContext->VSSetShader();
+		this->deviceContext->VSSetConstantBuffers();
+		
+		this->deviceContext->PSSetShaderResources();
+		this->deviceContext->PSSetConstantBuffers();
+		this->deviceContext->PSSetShader();
 		break;
 	}
+
+	//Draw();
+
 }
 
 void LevelManager::callSwapDimension()
