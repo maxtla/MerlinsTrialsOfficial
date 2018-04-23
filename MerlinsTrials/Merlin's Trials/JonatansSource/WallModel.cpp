@@ -19,10 +19,16 @@ WallModel::~WallModel()
 
 void WallModel::createBoundingBox()
 {
-	this->geometry->vertices;
+	XMFLOAT3 *points = new XMFLOAT3[this->geometry->getVertexCount()];
+	for (int i = 0; i < this->geometry->getVertexCount(); i++)
+	{
+		points[i] = this->geometry->vertices.at(i).pos;
+	}
+	this->collideBox = CollisionBox(points, this->geometry->getVertexCount());
+	
 }
 
-DirectX::BoundingBox WallModel::getBoundingBox() const
+CollisionBox WallModel::getBoundingBox() const
 {
-	return this->OBBox;
+	return this->collideBox;
 }
