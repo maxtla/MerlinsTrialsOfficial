@@ -11,11 +11,7 @@
 #include <vector>
 #include <SimpleMath.h>
 
-enum SHADER {
-	VertexColor,
-	VertexNormal,
-	VertexNormalTexture
-};
+enum SHADER { VertexColor, VertexNormal, VertexNormalTexture };
 
 class Shaders
 {
@@ -39,14 +35,18 @@ public:
 	Shaders(ID3D11Device* in_gDevice, ID3D11DeviceContext* in_gDeviceContext, ID3D11Buffer* in_vBuffer, ID3D11Buffer* in_iBuffer); 
 	~Shaders();
 
+	void initialize(ID3D11Device* in_gDevice, ID3D11DeviceContext* in_gDeviceContext);
 	void createShader(SHADER whatShader);
+	
 	void setShaderParams(DirectX::XMMATRIX in_WMatrix, DirectX::SimpleMath::Vector3 in_SpecColor, DirectX::SimpleMath::Vector3 in_DiffuseColor,
-						 DirectX::SimpleMath::Vector3 in_Emissive, float in_SpecExponent, float in_Opacity);
+		DirectX::SimpleMath::Vector3 in_Emissive, float in_SpecExponent, float in_Opacity);
 	void setCameraParams(DirectX::XMMATRIX in_Proj, DirectX::XMMATRIX in_View);
 	void setShaderLightParams(DirectX::SimpleMath::Vector3 in_Ambient, int in_WhichLight, DirectX::XMVECTOR in_LightDirection,
-							  DirectX::XMVECTOR in_LightDiffuseColor, DirectX::XMVECTOR in_LightSpecularColor);
+		DirectX::XMVECTOR in_LightDiffuseColor, DirectX::XMVECTOR in_LightSpecularColor);
 	void setShaderFogParams(DirectX::XMVECTOR in_FogColor);
 	void setTexture(ID3D11ShaderResourceView*  in_Tex);
+	void setBuffers(ID3D11Buffer* vBuffer, ID3D11Buffer* iBuffer);
+	
 	//void disableSpecular();
 	void setAlpha(float in_Alpha);
 	void setLightingEnabled(bool in_Value);

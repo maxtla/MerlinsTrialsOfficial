@@ -42,8 +42,6 @@ void LevelOne::createCB()
 
 void LevelOne::createModel(const std::string &meshName, const int &n)
 {
-
-
 		if (meshName == "Wall" || meshName == "Trunk")
 		{
 			WallModel wall(this->device, &this->geometryVec[n]);
@@ -58,7 +56,7 @@ void LevelOne::createModel(const std::string &meshName, const int &n)
 			wall.createBoundingBox();
 			wall.createBuffers();
 			wall.setBoundryWall();
-			this->wallModels.push_back(wall);
+			this->boundryWalls.push_back(wall);
 
 		}
 		else if (meshName == "Terrain")
@@ -67,13 +65,18 @@ void LevelOne::createModel(const std::string &meshName, const int &n)
 			terr.createBuffers();
 			this->terrainModels.push_back(terr);
 		}
+		//else if (meshName == "Water")
+		//{
+		//	//do water stuff
+		//	.createBuffers();
+		//	this->terrainModels.push_back(terr);
+		//}
 		else
 		{
 			ModelBase base(this->device, &this->geometryVec[n]);
 			base.createBuffers();
 			this->miscModels.push_back(base);
 		}
-	
 }
 
 void LevelOne::updateMatrices(const DirectX::XMMATRIX &in_matrix)
@@ -95,52 +98,16 @@ void LevelOne::rebindCB()
 
 void LevelOne::Draw()
 {
-
-	for (int i = 0; i < this->terrainModels.size(); i++)
+	switch (this->cDimension)
 	{
-
-		//input layout
-		//topology
-		this->updateMatrices(this->terrainModels[i].getWorld());
-		this->rebindCB();
-
-		this->deviceContext->IASetIndexBuffer(this->terrainModels[i].getIBuffer(), DXGI_FORMAT_R32_UINT, 0);
-		ID3D11Buffer * vbuffer = this->terrainModels[i].getVBuffer();
-		this->deviceContext->IASetVertexBuffers(0, 1, &vbuffer, (UINT*)sizeof(Geometry::Vertex), 0);
-
-		this->deviceContext->DrawIndexed(this->terrainModels[i].getGeometry()->indices.size(), 0 ,0);
+	case Dimension::NORMAL:
+		this->normalWallManager.Draw();
+		break;
+	case Dimension::OTHER:
+		this->otherWallManager.Draw();
+		break;
 	}
 
-	for (int i = 0; i < this->wallModels.size(); i++)
-	{
-		if (this->wallModels[i].isVisible())
-		{
-			//input layout
-			//topology
-			this->updateMatrices(this->terrainModels[i].getWorld());
-			this->rebindCB();
-
-			this->deviceContext->IASetIndexBuffer(this->wallModels[i].getIBuffer(), DXGI_FORMAT_R32_UINT, 0);
-			ID3D11Buffer * vbuffer = this->wallModels[i].getVBuffer();
-			this->deviceContext->IASetVertexBuffers(0, 1, &vbuffer, (UINT*)sizeof(Geometry::Vertex), 0);
-
-			this->deviceContext->DrawIndexed(this->wallModels[i].getGeometry()->indices.size(), 0, 0);
-		}
-	}
-
-	for (int i = 0; i < this->miscModels.size(); i++)
-	{
-		//input layout
-		//topology
-		this->updateMatrices(this->terrainModels[i].getWorld());
-		this->rebindCB();
-
-		this->deviceContext->IASetIndexBuffer(this->miscModels[i].getIBuffer(), DXGI_FORMAT_R32_UINT, 0);
-		ID3D11Buffer * vbuffer = this->miscModels[i].getVBuffer();
-		this->deviceContext->IASetVertexBuffers(0, 1, &vbuffer, (UINT*)sizeof(Geometry::Vertex), 0);
-
-		this->deviceContext->DrawIndexed(this->miscModels[i].getGeometry()->indices.size(), 0 , 0);
-	}
 }
 
 void LevelOne::collisionCheck()
@@ -155,13 +122,26 @@ void LevelOne::collisionCheck()
 	
 }
 
-bool LevelOne::initialize(ID3D11Device* in_device, ObjectImporter * importer, const std::string &in_fileName, Player* player)
+bool LevelOne::initialize(ID3D11Device* in_device, ID3D11DeviceContext* in_deviceContext, ObjectImporter * importer, const std::string &in_fileName, Player* player)
 {
 	this->player = player;
 	this->device = in_device;
+	this->deviceContext = in_deviceContext;
 	this->fileName = in_fileName;
 	this->objImporter = importer;
 
+	this->initializeModels();
+	this->normalWallManager.initialize(in_device, in_deviceContext);
+	this->otherWallManager.initialize(in_device, in_deviceContext);
+	this->terrainManager.initialize(in_device, in_deviceContext);
+	this->miscManager.initialize(in_device, in_deviceContext);
+	//this->waterManager.initialize(in_device, in_deviceContext);
+
+
+	this->normalWallManager.setModelPtr(&this->wallModels, &this->boundryWalls);
+	this->otherWallManager.setModelPtr(nullptr, &this->boundryWalls);
+	this->terrainManager.setModelPtr(&this->terrainModels);
+	this->miscManager.setModelPtr(&this->miscModels);
 
 }
 
@@ -184,12 +164,26 @@ bool LevelOne::initializeModels()
 			rValue = false;
 			break;
 		}
-		meshName = meshName.substr(0, pos - 1);
+		else
+		{
+			meshName = meshName.substr(0, pos - 1);
 
-		//create model and bb with current geometry
-		this->createModel(meshName, n);
+			//create model and bb with current geometry
+			this->createModel(meshName, n);
+		}
+
 	}
 
 	return rValue;
 
+}
+
+void LevelOne::setDimension(const Dimension &in_dimension)
+{
+	this->cDimension = in_dimension;
+}
+
+Dimension LevelOne::getCurrentDimension() const
+{
+	return this->cDimension;
 }

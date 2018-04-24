@@ -6,7 +6,6 @@
 
 LevelManager::LevelManager()
 {
-	this->cDimension = Dimension::NORMAL;
 	this->cLevel = 0;
 }
 
@@ -22,8 +21,7 @@ bool LevelManager::initLevelManager(ID3D11Device * in_device, ID3D11DeviceContex
 	this->deviceContext = in_deviceContext;
 	this->importer = in_importer;
 
-	rValue = this->levelOne.initialize(this->device, this->importer, PATH_ONE, player);
-
+	rValue = this->levelOne.initialize(in_device, in_deviceContext, this->importer, PATH_ONE, player);
 
 	return rValue;
 }
@@ -44,33 +42,16 @@ void LevelManager::changeLevel()
 void LevelManager::callSwapDimension()
 {
 	//swap current dimension use
-	switch (cDimension)
+	switch (this->levelOne.getCurrentDimension())
 	{
 	case NORMAL:
 	{
-		this->cDimension = Dimension::OTHER;
-		
-		for (int i = 0; i < this->levelOne.wallModels.size(); i++)
-		{
-			if (!this->levelOne.wallModels[i].getBoundryWall())
-			{
-				this->levelOne.wallModels[i].setVisibility(false);
-			}
-		}
-
+		this->levelOne.setDimension(Dimension::OTHER);
 		break;
 	}
 	case OTHER:
 	{
-		this->cDimension = Dimension::NORMAL;
-
-		for (int i = 0; i < this->levelOne.wallModels.size(); i++)
-		{
-			if (!this->levelOne.wallModels[i].getBoundryWall())
-			{
-				this->levelOne.wallModels[i].setVisibility(true);
-			}
-		}
+		this->levelOne.setDimension(Dimension::NORMAL);
 		break;
 	}
 	}

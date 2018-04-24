@@ -14,7 +14,6 @@ private:
 	ObjectImporter* importer; 
 
 	unsigned int cLevel;
-	Dimension cDimension;
 	
 	bool initiateLevels();
 public:
