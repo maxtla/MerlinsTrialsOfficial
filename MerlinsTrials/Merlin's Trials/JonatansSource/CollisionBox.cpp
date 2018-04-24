@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "CollisionBox.h"
 
 CollisionBox::CollisionBox()
@@ -28,39 +29,8 @@ CollisionBox::CollisionBox(BoundingOrientedBox boundingBox)
 
 CollisionBox::CollisionBox(XMFLOAT3 *points, int size)
 {
-	std::vector<XMVECTOR> allPoints;
-	std::vector<int> dublicatePoints;
-	int dublicateSize = 0;
-	for (int i = 0; i < size; i++)
-	{
-		allPoints.push_back(XMLoadFloat3(&points[i]));
-	}
-	/*for (int i = 0; i < allPoints.size(); i++)
-	{
-		for (int k = i; k < allPoints.size(); k++)
-		{
-			if (XMVector3Equal(allPoints.at(i), allPoints.at(k)))
-			{
-				dublicatePoints.push_back(k);
-				dublicateSize++;
-			}
-		}
-		for (int j = 0; j < dublicateSize; j++)
-		{
-			allPoints.erase(allPoints.begin()+dublicatePoints.at(j));
-		}
-		dublicateSize = 0;
-		allPoints.shrink_to_fit();	
-	}*/
-	XMFLOAT3 pointsF[8];
-	for (int i = 0; i < allPoints.size(); i++)
-	{
-		pointsF[i] = points[i];
-		//XMStoreFloat3(&pointsF[i], allPoints.at(i));
-	}
 	BoundingOrientedBox object;
-	object.CreateFromPoints(object, 2, pointsF, 1);
-	
+	object.CreateFromPoints(object, size, points,sizeof(XMFLOAT3));
 	this->box = object;
 	generateFaces();
 }

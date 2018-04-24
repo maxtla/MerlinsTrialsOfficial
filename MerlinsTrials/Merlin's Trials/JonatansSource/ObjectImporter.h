@@ -1,13 +1,13 @@
 #ifndef OBJECTIMPORTER_H
 #define OBJECTIMPORTER_H
-#include<assimp\Importer.hpp>
+#include <assimp\Importer.hpp>
 #include"Geometry.h"
 
 class ObjectImporter
 {
 private:
 	Assimp::Importer importer;
-	void debugString(const LPCSTR &in_string, const aiReturn &in_param);
+	void debugString(const LPCWSTR &in_string, const aiReturn &in_param);
 public:
 
 	ObjectImporter();

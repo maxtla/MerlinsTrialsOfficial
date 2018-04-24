@@ -1,5 +1,5 @@
-#ifndef GEOMETRY_H
-#define GEOMETRY_H
+#ifndef OBJECT_H
+#define OBJECT_H
 
 #include<d3d11.h>
 #include<SimpleMath.h>
@@ -24,9 +24,7 @@ public:
 	//Vertex/Index containers
 	std::vector<Vertex> vertices;
 	std::vector<int> indices;
-
-private:
-
+protected:
 
 
 	//Shading values
@@ -41,11 +39,19 @@ private:
 	std::string difTexPath;
 	std::string normTexPath;
 
-	//Geometry name
-	std::string meshName;
+	//Object name
+	std::string name;
 
+	//Count
 	int vertexCount;
 	int faceCount;
+
+	//Buffers
+	ID3D11Buffer* vBuffer;
+	ID3D11Buffer* iBuffer;
+
+	//World Matrix
+	Matrix world;
 
 	//Checks
 	bool isColliding;
@@ -57,26 +63,40 @@ public:
 	~Geometry();
 
 	//Get
-	int getVertexCount() const;
-	int getFaceCount() const;
-	std::string getName() const;
+	int getVertexCount(void) const;
+	int getFaceCount(void) const;
+	Matrix getWorld(void) const;
+	ID3D11Buffer* getVBuffer(void);
+	ID3D11Buffer* getIBuffer(void);
+	std::vector<Vertex> getVertices(void) const;
+	std::vector<int> getIndices(void) const;
+	std::string getName(void) const;
+
+	Vector3 getSpec(void) const;
+	Vector3 getDif(void) const;
+	Vector3 getEmissive(void) const;
+	float getSpecExponent(void) const;
+	float getOpaciy(void) const;
+
 	//Set
-	void setName(const std::string &name);
-	void setSpec(const Vector3 &spec);
-	void setAmbient(const Vector3 &ambient);
-	void setEmissive(const Vector3 &emissive);
-	void setDiffuse(const Vector3 &dif);
-	void setSpecExponent(const float &specExponent);
-	void setOpacity(const float &opacity);
-	void setDifTexPath(const std::string &path);
-	void setNormTexPath(const std::string &path);
-	void setVertexCount(const unsigned int &in_count);
-	void setFaceCount(const unsigned int &in_count);
+	void setName(std::string name);
+	void setSpec(Vector3 spec);
+	void setAmbient(Vector3 ambient);
+	void setEmissive(Vector3 emissive);
+	void setDiffuse(Vector3 dif);
+	void setSpecExponent(float specExponent);
+	void setOpacity(float opacity);
+	void setDifTexPath(std::string path);
+	void setNormTexPath(std::string path);
+	void setVertexCount(int vertices);
+	void setFaceCount(int faces);
+
 	//Misc
 	void addVertex(Vertex newVertex);
 	void addIndex(int newIndex);
-
+	void createBuffers(ID3D11Device* device);
+	void writeToFile(void);
 
 };
 
-#endif // !Geometry_H
+#endif // !OBJECT_H

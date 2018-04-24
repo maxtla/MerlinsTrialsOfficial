@@ -1,9 +1,11 @@
 #ifndef LEVELMANAGER_H
 #define LEVELMANAGER_H
 #include"LevelOne.h"
+#include"ModelBase.h"
 #include"Enumerators.h"
 #include"Player.h"
 
+class LevelOne;
 class LevelManager
 {
 private:
@@ -14,6 +16,7 @@ private:
 	ObjectImporter* importer; 
 
 	unsigned int cLevel;
+	Dimension cDimension;
 	
 	bool initiateLevels();
 public:

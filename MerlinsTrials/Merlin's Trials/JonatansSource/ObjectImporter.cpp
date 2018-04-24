@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "ObjectImporter.h"
 #include<windows.h>
 #include<iostream>
@@ -6,7 +7,7 @@
 #include<assimp\postprocess.h>
 
 
-void ObjectImporter::debugString(const LPCSTR &in_string, const aiReturn &in_param)
+void ObjectImporter::debugString(const LPCWSTR &in_string, const aiReturn &in_param)
 {
 	if (AI_SUCCESS != in_param)
 	{
@@ -24,13 +25,13 @@ ObjectImporter::~ObjectImporter()
 
 bool ObjectImporter::importModel(const std::string & fname, std::vector<Geometry>& objects){
 
-	//const aiScene* nScene = this->importer.ReadFile(fname, aiProcess_Triangulate);
-	const aiScene* nScene = this->importer.ReadFile(fname, aiProcess_JoinIdenticalVertices);
+	const aiScene* nScene = this->importer.ReadFile(fname, aiProcess_Triangulate);
+	//const aiScene* nScene = this->importer.ReadFile(fname, NULL);
 
 	//if the importer fails to read the specified file it returns NULL == 0
 	if (!nScene)
 	{
-		OutputDebugString(reinterpret_cast<LPCSTR>(this->importer.GetErrorString()));
+		OutputDebugString(reinterpret_cast<LPCWSTR>(this->importer.GetErrorString()));
 		return false;
 	}
 
@@ -70,12 +71,11 @@ bool ObjectImporter::importModel(const std::string & fname, std::vector<Geometry
 		//Iterate indices and store them
 		for (UINT32 k = 0; k < cMesh->mNumFaces; k++)
 		{
-			aiFace cFace = cMesh->mFaces[k];
-
-			for (UINT32 j = 0; j < cFace.mNumIndices; j++)
+			
+			for (UINT32 j = 0; j < cMesh->mFaces[k].mNumIndices; j++)
 			{
 				//save indices
-				tempO.addIndex(cFace.mIndices[j]);
+				tempO.addIndex(cMesh->mFaces[k].mIndices[j]);
 			}
 		}
 
@@ -96,39 +96,39 @@ bool ObjectImporter::importModel(const std::string & fname, std::vector<Geometry
 	
 		rValue = mtl->Get(AI_MATKEY_SHININESS, nsSpecularExponent);
 		tempO.setSpecExponent(nsSpecularExponent);
-		this->debugString(LPCSTR("NS failed import"), rValue);
+		this->debugString(LPCWSTR("NS failed import"), rValue);
 
-		rValue = mtl->Get(AI_MATKEY_OPACITY, dOpacity);
+		mtl->Get(AI_MATKEY_OPACITY, dOpacity);
 		tempO.setOpacity(dOpacity);
-		this->debugString(LPCSTR("dOpacity failed import"), rValue);
+		this->debugString(LPCWSTR("dOpacity failed import"), rValue);
 
-		rValue = mtl->Get(AI_MATKEY_COLOR_DIFFUSE, cColor);
+		mtl->Get(AI_MATKEY_COLOR_DIFFUSE, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setDiffuse(vec3);
-		this->debugString(LPCSTR("cDiffuse failed import"), rValue);
+		this->debugString(LPCWSTR("cDiffuse failed import"), rValue);
 
-		rValue = mtl->Get(AI_MATKEY_COLOR_AMBIENT, cColor);
+		mtl->Get(AI_MATKEY_COLOR_AMBIENT, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setAmbient(vec3);
-		this->debugString(LPCSTR("cAmbient failed import"), rValue);
+		this->debugString(LPCWSTR("cAmbient failed import"), rValue);
 
-		rValue = mtl->Get(AI_MATKEY_COLOR_SPECULAR, cColor);
+		mtl->Get(AI_MATKEY_COLOR_SPECULAR, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setSpec(vec3);
-		this->debugString(LPCSTR("cSpecular failed import"), rValue);
+		this->debugString(LPCWSTR("cSpecular failed import"), rValue);
 
-		rValue = mtl->Get(AI_MATKEY_COLOR_EMISSIVE, cColor);
+		mtl->Get(AI_MATKEY_COLOR_EMISSIVE, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);
 		tempO.setEmissive(vec3);
-		this->debugString(LPCSTR("cEmissive failed import"), rValue);
+		this->debugString(LPCWSTR("cEmissive failed import"), rValue);
 
-		rValue = mtl->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
+		mtl->GetTexture(aiTextureType_DIFFUSE, 0, &aiPath);
 		tempO.setDifTexPath(aiPath.C_Str());
-		this->debugString(LPCSTR("tPath diffuse failed import"), rValue);
+		this->debugString(LPCWSTR("tPath diffuse failed import"), rValue);
 
-		rValue = mtl->GetTexture(aiTextureType_NORMALS, 0, &aiPath);
+		mtl->GetTexture(aiTextureType_NORMALS, 0, &aiPath);
 		tempO.setNormTexPath(aiPath.C_Str());
-		this->debugString(LPCSTR("tPath normals failed import"), rValue);
+		this->debugString(LPCWSTR("tPath normals failed import"), rValue);
 
 		objects.push_back(tempO);
 

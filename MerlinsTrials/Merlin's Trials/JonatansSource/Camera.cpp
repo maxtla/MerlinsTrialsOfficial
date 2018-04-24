@@ -1,256 +1,184 @@
-#include"Camera.h"
+#include "stdafx.h"
+#include "Camera.h"
 
-Camera::Camera() {
 
-	//Camera
-	this->camForward = { 0.0f, 0.0f, 1.0f, 0.0f };
-	this->camRight = { 1.0f, 0.0f, 0.0f, 0.0f };
-	this->camUp = { 0.0f, 1.0f, 0.0f, 0.0f };
-	this->camY = { 0.0f, 1.0f, 0.0f, 0.0f };
+Camera::Camera()
+{
+	m_view = Matrix::Identity;
+	m_projection = Matrix::Identity;
+	m_orthoProj = Matrix::Identity;
 
-	this->camTarget = { 0.0f, 0.0f, 0.0f, 0.0f };
-	this->position = { 0.0f, 10.0f, 0.0f, 0.0f };
+	m_camPos = Vector3::Zero;
+	m_up = Vector3::Zero;
+	m_target = Vector3::Zero;
+	m_camForward = Vector3::Zero;
+	m_right = Vector3::Zero;
+	m_yaw = 0.f;
+	m_pitch = 0.f;
+	m_roll = 0.f;
 
-	this->proj = DirectX::XMMatrixPerspectiveFovLH((DirectX::XM_PI * 0.45f), (WIN_WIDTH / WIN_HEIGHT), 0.1f, 10000.0f);;
+	m_fov = 0.f;
+	m_aspect = 0.f;
+	m_nearZ = 0.f;
+	m_farZ = 0.f;
 
-	this->camRotation = DirectX::XMMatrixIdentity();
-	this->camView = DirectX::XMMatrixIdentity();
+	m_viewWidth = 0.f;
+	m_viewHeight = 0.f;
+	m_orthoNearZ = 0.f;
+	m_orthoFarZ = 0.f;
 
-	this->speed = 0.0f;
-	this->moveX = 0.0f;
-	this->moveZ = 0.0f;
-	this->yaw = 0.0f;
-	this->pitch = 0.0f;
-
-	//Keyboard and mouse
-	this->keyboard = nullptr;
-	this->mouse = nullptr;
-	this->dI = nullptr;
-
+	m_moveSpeed = 0.001f;
+	m_rotationalOffset = 0.01f;
 }
 
-Camera::~Camera() {
 
-	//Unaquire mouse/keyboard from this application
-	if (this->keyboard) {
-
-		this->keyboard->Unacquire();
-		this->keyboard->Release();
-
-	}
-
-	if (this->mouse) {
-
-		this->mouse->Unacquire();
-		this->mouse->Release();
-
-	}
-
-	if (this->dI) {
-
-		this->dI->Release();
-
-	}
-
+Camera::~Camera()
+{
 }
 
-void Camera::getInput() {
-
-	//Stores mouse/keyboard info
-	BYTE keyboardState[256];
-
-	//Acuires the mouse and keyboard for this application(incase it is used elsewhere)
-	this->keyboard->Acquire();
-	this->mouse->Acquire();
-
-	//Get current state of mouse/keyboard
-	this->keyboard->GetDeviceState(sizeof(keyboardState), (LPVOID)&keyboardState);
-	this->mouse->GetDeviceState(sizeof(DIMOUSESTATE), &this->currentMouseState);
-
-	//Store directions
-	bool x = false, z = false;
-
-	//Update speed value
-	if (keyboardState[DIK_LSHIFT] & 0x80) {
-
-		this->speed = 150.0f;
-
-	}
-	else {
-
-		this->speed = 50.0f;
-
-	}
-
-	//Keyboard input
-	if (keyboardState[DIK_A] & 0x80) {
-
-		this->moveX -= this->speed;
-		x = true;
-
-	}
-	else if (keyboardState[DIK_D] & 0x80) {
-
-		this->moveX += this->speed;
-		x = true;
-
-	}
-
-	if (keyboardState[DIK_W] & 0x80) {
-
-		this->moveZ += this->speed;
-		z = true;
-
-	}
-	else if (keyboardState[DIK_S] & 0x80) {
-
-		this->moveZ -= this->speed;
-		z = true;
-
-	}
-
-	//Keeps same speed when moving in one or two directions
-	if (x && z) {
-
-		this->moveX /= 2;
-		this->moveZ /= 2;
-
-	}
-
-	//Check mouse input
-	if (this->currentMouseState.lX != this->previousMouseState.lX) {
-
-		this->yaw += this->currentMouseState.lX * 0.005f;
-
-		//Save previous mouse state
-		this->previousMouseState = this->currentMouseState;
-
-	}
-
-	if (this->currentMouseState.lY != this->previousMouseState.lY) {
-
-		this->pitch += this->currentMouseState.lY * 0.005f;
-
-		//Save previous mouse state
-		this->previousMouseState = this->currentMouseState;
-
-	}
-
+void Camera::setCameraPosition(Vector3 pos)
+{
+	m_camPos = pos; 
+	this->m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up); 
 }
 
-void Camera::update(float dt) {
-
-	//Rotation matrix, rotates X, Y & Z
-	this->camRotation = DirectX::XMMatrixRotationRollPitchYaw(this->pitch, this->yaw, 0.0f);
-
-	//Transforms defaultForward vector with rotation matrix
-	this->camTarget = DirectX::XMVector3TransformCoord({ 0.0f, 0.0f, 1.0f, 0.0f }, this->camRotation);
-
-	//Normalize camTarget vector
-	this->camTarget = DirectX::XMVector3Normalize(this->camTarget);
-
-	//Rotation matrix around Y
-	DirectX::XMMATRIX matRotY = DirectX::XMMatrixRotationY(this->yaw);
-
-	//Transform camera vectors with rotation matrix
-	this->camRight = DirectX::XMVector3TransformCoord({ 1.0f, 0.0f, 0.0f, 0.0f }, matRotY);
-	this->camForward = DirectX::XMVector3TransformCoord({ 0.0f, 0.0f, 1.0f, 0.0f }, matRotY);
-	this->camUp = DirectX::XMVector3TransformCoord(this->camUp, matRotY);
-
-	//Apply movement to the camera
-	this->position = DirectX::XMVectorAdd(DirectX::XMVectorScale(this->camRight, (this->moveX * dt)), this->position);
-	this->position = DirectX::XMVectorAdd(DirectX::XMVectorScale(this->camForward, (this->moveZ * dt)), this->position);
-
-	//Reset movement values
-	this->moveX = 0.0f;
-	this->moveZ = 0.0f;
-
-	//Add the position to the camera target matrix
-	this->camTarget = DirectX::XMVectorAdd(this->position, this->camTarget);
-
-	//Set values for the camView matrix which is the final view
-	this->camView = DirectX::XMMatrixLookAtLH(this->position, this->camTarget, this->camUp);
-
+void Camera::setCameraUp(Vector3 up)
+{
+	m_up = up; 
+	this->m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
 }
 
-bool Camera::initDI(HINSTANCE* hInst, HWND* wHandle) {
+void Camera::setCameraTarget(Vector3 target)
+{
+	m_target = target; 
+	this->m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
+}
 
-	bool result = true;
+void Camera::setCameraForward(Vector3 forward)
+{
+	m_camForward = forward; 
+	m_camForward.Normalize();
 
-	//Create direct input object
-	HRESULT hr = DirectInput8Create(
-		*hInst,				//Application instance
-		DIRECTINPUT_VERSION,//Version of DirectInput to use
-		IID_IDirectInput8,	//Interface of DirectInput to use
-		(void**)&this->dI,	//Pointer to DirectInput object
-		NULL);				//COM
+	m_up = m_camForward.Cross(m_up); 
+	m_up.Normalize();
 
-	if (FAILED(hr)) {
+	this->m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
+}
 
-		result = false;
+void Camera::setCameraRight(Vector3 right)
+{
+	m_right = right; 
+	m_right.Normalize();
 
-	}
-	else {
+	m_up = m_right.Cross(m_camForward); 
+	m_up.Normalize();
 
-		//Create Keyboard
-		hr = this->dI->CreateDevice(
-			GUID_SysKeyboard,	//GUID Flag
-			&this->keyboard,	//Device to use
-			NULL				//COM
-		);
+	this->m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
+}
 
-		if (FAILED(hr)) {
+bool Camera::createViewMatrix(Vector3 eye, Vector3 target, Vector3 up)
+{
+	//create a LH view matrix
+	this->m_view = DirectX::XMMatrixLookAtRH(eye, target, up);
 
-			result = false;
+	//set pos, target and up
+	this->m_camPos = eye;
+	this->m_target = target;
+	this->m_up = up;
+	this->m_up.Normalize();
 
+	//calculate the forward and right vector (construct the final coordinatsystem)
+	this->m_camForward = target - eye;
+	this->m_camForward.Normalize();
+	this->m_right = this->m_up.Cross(this->m_camForward);
+	this->m_right.Normalize();
+
+	return true;
+}
+
+bool Camera::createProjectionMatrix(float fov, float aspect, float nearZ, float farZ)
+{
+	//create the LH perspective projection matrix
+	this->m_projection = DirectX::XMMatrixPerspectiveFovRH(fov, aspect, nearZ, farZ);
+
+	//set related components
+	this->m_fov = fov;
+	this->m_aspect = aspect;
+	this->m_nearZ = nearZ;
+	this->m_farZ = farZ;
+
+	return true;
+}
+
+bool Camera::createOrthoMatrix(float viewWidth, float viewHeight, float nearZ, float farZ)
+{
+	//create the LH orthograpic matrix
+	this->m_orthoProj = DirectX::XMMatrixOrthographicRH(viewWidth, viewHeight, nearZ, farZ);
+
+	//set related components
+	this->m_viewWidth = viewWidth;
+	this->m_viewHeight = viewHeight;
+	this->m_orthoNearZ = nearZ;
+	this->m_orthoFarZ = farZ;
+
+	return true;
+}
+
+void Camera::update()
+{
+	//start by updating the position if necessary
+	if (m_timer.update())
+	{
+		if (m_moveForward)
+		{
+			m_camPos += m_camForward * m_moveSpeed;
+			m_target += m_camForward * m_moveSpeed;
 		}
-		else {
-
-			//Create Mouse
-			hr = this->dI->CreateDevice(
-				GUID_SysMouse,	//GUID Flag
-				&this->mouse,	//Device to use
-				NULL			//COM
-			);
-
-			if (FAILED(hr)) {
-
-				result = false;
-
-			}
-			else {
-
-				//Set data format
-				this->keyboard->SetDataFormat(&c_dfDIKeyboard);	//Set type of device
-				this->keyboard->SetCooperativeLevel(*wHandle, DISCL_FOREGROUND | DISCL_NONEXCLUSIVE);	//Flags
-
-				this->mouse->SetDataFormat(&c_dfDIMouse);		//Set type of device
-				this->mouse->SetCooperativeLevel(*wHandle, DISCL_EXCLUSIVE | DISCL_NOWINKEY | DISCL_FOREGROUND);	//Flags
-
-			}
-
+		if (m_moveBackward)
+		{
+			m_camPos -= m_camForward * m_moveSpeed;
+			m_target -= m_camForward * m_moveSpeed;
+		}
+		if (m_moveRight)
+		{
+			m_camPos += m_right * m_moveSpeed;
+			m_target += m_right * m_moveSpeed;
+		}
+		if (m_moveLeft)
+		{
+			m_camPos -= m_right * m_moveSpeed;
+			m_target -= m_right * m_moveSpeed;
 		}
 
+		if (m_rotated)
+		{
+			m_yaw += m_lastMousePos.x * m_rotationalOffset;
+			m_pitch -= m_lastMousePos.y * m_rotationalOffset;
+
+			clampToHalfPI(this->m_pitch);
+
+
+			Matrix camRotationMatrix = DirectX::XMMatrixRotationRollPitchYaw(m_pitch, m_yaw, m_roll);
+
+			m_right = DirectX::XMVector3TransformCoord(DefaultRight, camRotationMatrix);
+			m_camForward = DirectX::XMVector3TransformCoord(DefaultForward, camRotationMatrix);
+
+			m_right.Normalize();
+			m_camForward.Normalize();
+
+			m_up = m_right.Cross(m_camForward);
+			m_up.Normalize();
+
+			m_target = m_camPos + m_camForward;
+
+			m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
+		}
+		else
+			m_view = DirectX::XMMatrixLookAtRH(m_camPos, m_target, m_up);
 	}
-
-	return result;
-
 }
 
-DirectX::XMMATRIX Camera::getView(void) const {
-
-	return this->camView;
-
-}
-
-DirectX::XMMATRIX Camera::getProj(void) const{
-
-	return this->proj;
-
-}
-
-DirectX::XMVECTOR Camera::getPosition(void) {
-
-	return this->position;
-
+void Camera::clampToHalfPI(float & value)
+{
+	value = std::fmax(-0.5f*DirectX::XM_PI, std::fmin(value, 0.5f*DirectX::XM_PI));
 }

@@ -4,13 +4,15 @@
 #include"Geometry.h"
 #include<string>
 #include"Enumerators.h"
-#include"WallManager.h"
-#include"TerrainManager.h"
-#include"WaterManager.h"
-#include"MiscManager.h"
+#include"TerrainModel.h"
+#include "WallModel.h"
 #include"Player.h"
 #include"Collision.h"
 #include"Shaders.h"
+
+
+class TerrainModel;
+class WallModel;
 
 class LevelOne
 {	
@@ -36,18 +38,12 @@ private:
 	ID3D11Device* device;
 	ID3D11DeviceContext * deviceContext;
 	ID3D11Buffer * constBuffer;
-
-	WallManager normalWallManager;
-	WallManager otherWallManager;
-	TerrainManager terrainManager;
-	WaterManager waterManager;
-	MiscManager miscManager;
+	
+	
 
 	Collision collideManager;
 	Player* player;
-	Dimension cDimension;
-
-
+	
 	void createCB();
 	void createModel(const std::string &meshName, const int &i);
 	void updateMatrices(const DirectX::XMMATRIX &in_matrix);
@@ -60,8 +56,6 @@ public:
 	void collisionCheck();
 	bool initialize(ID3D11Device * in_device, ID3D11DeviceContext* in_deviceContext, ObjectImporter * importer, const std::string &in_fileName, Player* player);
 	bool initializeModels();
-	void setDimension(const Dimension &in_dimension);
-	Dimension getCurrentDimension() const;
 };
 
 #endif // !LEVELONE_H

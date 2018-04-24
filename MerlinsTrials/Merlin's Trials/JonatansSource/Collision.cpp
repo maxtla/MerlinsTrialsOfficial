@@ -1,3 +1,4 @@
+#include "stdafx.h"
 #include "Collision.h"
 
 XMFLOAT3 Collision::updateCollision(BoundingOrientedBox *origin, BoundingOrientedBox *target)
