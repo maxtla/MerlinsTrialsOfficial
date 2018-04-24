@@ -1,0 +1,9 @@
+﻿  stdafx.cpp
+  InputHandler.cpp
+  GEngine.cpp
+  Camera.cpp
+  MerlinsTrialsOfficial.cpp
+c:\users\maxim\source\repos\merlinstrialsofficial\merlinstrialsofficial\merlinstrialsofficial.cpp(70): warning C4244: '=': conversion from 'LONG' to 'float', possible loss of data
+c:\users\maxim\source\repos\merlinstrialsofficial\merlinstrialsofficial\merlinstrialsofficial.cpp(71): warning C4244: '=': conversion from 'LONG' to 'float', possible loss of data
+  Generating Code...
+  MerlinsTrialsOfficial.vcxproj -> C:\Users\maxim\source\repos\MerlinsTrialsOfficial\x64\Debug\MerlinsTrialsOfficial.exe
