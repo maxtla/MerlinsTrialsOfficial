@@ -8,7 +8,8 @@ class TerrainModel : public ModelBase
 private:
 	
 public:
-	TerrainModel(DirectX::XMMATRIX world) : ModelBase(world, true, true) {}
+	TerrainModel(Geometry * in_geometry);
+	TerrainModel(DirectX::XMMATRIX world) : ModelBase(world) {}
 	~TerrainModel();
 };
 
