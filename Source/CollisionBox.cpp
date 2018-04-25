@@ -14,7 +14,7 @@ CollisionBox::CollisionBox(XMFLOAT3 position, XMFLOAT3 extents, XMFLOAT4 orienta
 	{
 		XMStoreFloat4(&this->box.Orientation,XMQuaternionRotationMatrix(XMMatrixRotationY(0)));
 	}
-	generateFaces();
+	this->generateFaces();
 }
 CollisionBox::CollisionBox(BoundingOrientedBox boundingBox)
 {
@@ -23,46 +23,15 @@ CollisionBox::CollisionBox(BoundingOrientedBox boundingBox)
 	{
 		XMStoreFloat4(&this->box.Orientation, XMQuaternionRotationMatrix(XMMatrixRotationY(0)));
 	}
-	generateFaces();
+	this->generateFaces();
 }
 
 CollisionBox::CollisionBox(XMFLOAT3 *points, int size)
 {
-	std::vector<XMVECTOR> allPoints;
-	std::vector<int> dublicatePoints;
-	int dublicateSize = 0;
-	for (int i = 0; i < size; i++)
-	{
-		allPoints.push_back(XMLoadFloat3(&points[i]));
-	}
-	/*for (int i = 0; i < allPoints.size(); i++)
-	{
-		for (int k = i; k < allPoints.size(); k++)
-		{
-			if (XMVector3Equal(allPoints.at(i), allPoints.at(k)))
-			{
-				dublicatePoints.push_back(k);
-				dublicateSize++;
-			}
-		}
-		for (int j = 0; j < dublicateSize; j++)
-		{
-			allPoints.erase(allPoints.begin()+dublicatePoints.at(j));
-		}
-		dublicateSize = 0;
-		allPoints.shrink_to_fit();	
-	}*/
-	XMFLOAT3 pointsF[8];
-	for (int i = 0; i < allPoints.size(); i++)
-	{
-		pointsF[i] = points[i];
-		//XMStoreFloat3(&pointsF[i], allPoints.at(i));
-	}
 	BoundingOrientedBox object;
-	object.CreateFromPoints(object, 2, pointsF, 1);
-	
+	object.CreateFromPoints(object, size, points,sizeof(XMFLOAT3));
 	this->box = object;
-	generateFaces();
+	this->generateFaces();
 }
 
 CollisionBox::~CollisionBox()
@@ -237,4 +206,20 @@ Faces CollisionBox::getClosestFace(CollisionBox* target)
 		}
 	}
 	return target->boxFaces.at(faceIndex);
+}
+
+CollisionBox CollisionBox::getWorldBox(XMMATRIX world)
+{
+	
+	XMFLOAT3 Corners[this->box.CORNER_COUNT];
+	this->box.GetCorners(Corners);
+	XMVECTOR points;
+	for (int i = 0; i < this->box.CORNER_COUNT; i++)
+	{
+		points = XMLoadFloat3(&Corners[i]);
+		XMVector3TransformCoord(points, world);
+		XMStoreFloat3(&Corners[i], points);
+	}
+	CollisionBox worldBox = CollisionBox(Corners, this->box.CORNER_COUNT);
+	return worldBox;
 }
