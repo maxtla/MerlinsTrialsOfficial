@@ -60,6 +60,7 @@ public:
 	Faces getFaceAt(int pos);
 	int getFaceIndex(Faces face);
 	Faces getClosestFace(CollisionBox* target);
+	CollisionBox getWorldBox(XMMATRIX world);
 
 };
 #endif
