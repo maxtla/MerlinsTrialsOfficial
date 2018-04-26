@@ -37,6 +37,11 @@ void TreeManager::initialize(std::vector<Geometry*> in_geometry)
 	this->createModels(in_geometry);
 }
 
+void TreeManager::creataShaders()
+{
+
+}
+
 void TreeManager::createModels(std::vector<Geometry*> in_geometry)
 {
 	for (auto var : in_geometry)

@@ -16,11 +16,14 @@ private:
 	std::vector<LeavesModel> leaves;
 	std::vector<TrunkModel> trunks;
 
+	std::vector<Shaders> shaders;
+
 	Camera* camera;
 	ID3D11Device* device;
 	ID3D11DeviceContext* context;
 	Dimension current_dim;
 
+	void creataShaders();
 	void createModels(std::vector<Geometry*> in_geometry);
 public:
 	TreeManager();

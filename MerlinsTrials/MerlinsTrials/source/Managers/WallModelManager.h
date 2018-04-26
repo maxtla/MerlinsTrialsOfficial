@@ -17,6 +17,8 @@ private:
 	std::vector<WallModel> oWalls; //surrounding walls
 	//add more wall types - Brick, wooden etc.
 
+	std::vector<Shaders> shaders;
+
 	Camera* camera;
 	ID3D11Device* device;
 	ID3D11DeviceContext* context;
