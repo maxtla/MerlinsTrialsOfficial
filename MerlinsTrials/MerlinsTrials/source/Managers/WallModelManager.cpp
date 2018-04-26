@@ -4,19 +4,20 @@ WallModelManager::WallModelManager()
 {
 }
 
-WallModelManager::WallModelManager(Player * in_player, ID3D11Device * in_device, ID3D11DeviceContext * in_context) : ManagerBase(in_player, in_device, in_context)
+WallModelManager::WallModelManager(Camera* in_camera, ID3D11Device * in_device, ID3D11DeviceContext * in_context)
 {
-	//initcomponent
-	this->shaderComponent;
+	this->camera = in_camera;
+	this->device = in_device;
+	this->context = in_context;
 }
 
 WallModelManager::~WallModelManager()
 {
 }
 
-void WallModelManager::createModels()
+void WallModelManager::createModels(std::vector<Geometry*> in_geometryVec)
 {
-	for (auto var : this->geometry)
+	for (auto var : in_geometryVec)
 	{
 		std::string name = var->getName();
 
@@ -29,25 +30,39 @@ void WallModelManager::createModels()
 		name = name.substr(0, pos - 1);
 		if (var->getName() == WALLO)
 		{
-			this->oWalls.push_back(WallModel(var));
+			this->oWalls.push_back(WallModel(var, this->context));
 		}
 		else if(var->getName() == WALL)
 		{
-			this->walls.push_back(WallModel(var));
+			this->walls.push_back(WallModel(var, this->context));
 		}
 
-		//add more wall types if needed
+		//add more wall type checks - Brick, wooden etc.
 
 	}
 }
 
-void WallModelManager::DrawModels()
+void WallModelManager::update()
 {
 
 }
 
-void WallModelManager::initialize(std::vector<Geometry*> in_var)
+void WallModelManager::Draw(const Dimension &in_dim)
 {
-	this->geometry = in_var;
-	this->createModels();
+	//setshaders
+	//cullcheck
+
+	for (auto var : this->walls)
+	{
+		var.Draw();
+	}
+	for (auto var : this->oWalls)
+	{
+		var.Draw();
+	}
+}
+
+void WallModelManager::initialize(std::vector<Geometry*> in_geometryVec)
+{
+	this->createModels(in_geometryVec);
 }

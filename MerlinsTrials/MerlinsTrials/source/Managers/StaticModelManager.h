@@ -1,31 +1,30 @@
 #ifndef STATICMODELMANAGER_H
 #define STATICMODELMANAGER_H
 #include"..\Importer\Geometry.h"
-#include"..\Objects\TerrainModel.h"
-#include"..\Objects\LeavesModel.h"
-#include"..\Objects\TrunkModel.h"
-#include"..\Managers\ManagerBase.h"
+#include"..\Managers\WallModelManager.h"
+#include"..\Managers\InputHandler.h"
 
 #include"d3d11.h"
 #include<vector>
-
-class StaticModelManager : public ManagerBase
+ 
+class StaticModelManager
 {
 private:
-	std::vector<Geometry*> geometry;
-	std::vector<TerrainModel> terrianModels;
-	std::vector<TrunkModel> trunkModels;
-	std::vector<LeavesModel> leavesModels;
+	Timer timer;
+	Dimension current_dim;
+	InputHandler* input_handler;
+	WallModelManager wallManager;
 
-	void rebindCB();
-	void createModels();
+	//to add more managers
+	bool checkDim();
 public:
 	StaticModelManager();
-	StaticModelManager(Player* in_player, ID3D11Device* in_device, ID3D11DeviceContext * in_context);
+	StaticModelManager(InputHandler* in_handler);
 	~StaticModelManager();
 
-	void DrawModels();
-	void initialize(std::vector<Geometry*> in_var);
+	void update();
+	void Draw();
+	void initialize(std::vector<Geometry*> in_geometry, Camera* in_camera, ID3D11Device* in_device, ID3D11DeviceContext * in_context);
 
 };
 

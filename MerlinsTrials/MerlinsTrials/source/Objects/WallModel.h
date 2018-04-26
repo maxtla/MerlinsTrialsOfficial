@@ -12,10 +12,11 @@ private:
 	
 
 public:
-	WallModel(Geometry * in_geometry);
+	WallModel(Geometry * in_geometry, ID3D11DeviceContext* in_context);
 	WallModel(DirectX::XMMATRIX world, bool isSolid, bool isVisible) : ModelBase(world, isSolid, isVisible){}
 	~WallModel();
 
+	void Draw();
 	CollisionBox getBoundingBox() const;
 };
 

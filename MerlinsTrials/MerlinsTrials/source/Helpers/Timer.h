@@ -27,10 +27,22 @@ public:
 		return false;
 	}
 
+	bool checkDT(float to_wait)
+	{
+		high_resolution_clock::time_point current = high_resolution_clock::now();
+		timer += current - m_start;
+		if (to_wait < timer.count())
+		{
+			timer.zero();
+			return true;
+		}
+		return false;
+	}
 
 private:
 	std::chrono::high_resolution_clock::time_point m_start;
 	double m_count;
+	duration<double, std::milli> timer;
 };
 #endif //TIMER_H
 

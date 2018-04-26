@@ -85,6 +85,11 @@ void InputHandler::wndChanged(bool & changed)
 	}
 }
 
+bool InputHandler::dimensionCheck()
+{
+	return this->m_tracker.IsKeyPressed(DirectX::Keyboard::Q);
+}
+
 void InputHandler::clampToPi(float & value)
 {
 	value = std::fmax(-0.5f*DirectX::XM_PI, std::fmin(value, 0.5f*DirectX::XM_PI));

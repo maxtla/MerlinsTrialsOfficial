@@ -1,58 +1,61 @@
 #include "StaticModelManager.h"
 
+bool StaticModelManager::checkDim()
+{	
+	//if key is pressed
+	if (this->input_handler->dimensionCheck())
+	{
+		//check timer on dimension change, 1sec
+		if (this->timer.checkDT(1.0f))
+		{	
+			//normal = 0
+			if (!this->current_dim)
+			{
+				this->current_dim = Dimension::OTHER;
+			}
+			else
+			{
+				this->current_dim = Dimension::NORMAL;
+			}
+
+			this->timer.startTimer();
+		}
+	}
+}
+
 StaticModelManager::StaticModelManager()
 {
 }
 
-StaticModelManager::StaticModelManager(Player* in_player, ID3D11Device* in_device, ID3D11DeviceContext * in_context) : ManagerBase(in_player, in_device, in_context)
+StaticModelManager::StaticModelManager(InputHandler* in_handler)
 {
+	this->input_handler = in_handler;
 }
 
 StaticModelManager::~StaticModelManager()
 {
 }
 
-void StaticModelManager::rebindCB()
+void StaticModelManager::update()
 {
+	this->checkDim();
+}
+
+void StaticModelManager::Draw()
+{
+	//check dimension and if managers are active
+
+	this->wallManager.Draw(this->current_dim);
+	//draw other managers
 
 }
 
-void StaticModelManager::createModels()
-{
-	for (auto var : this->geometry)
-	{
-		std::string name = var->getName();
+void StaticModelManager::initialize(std::vector<Geometry*> in_geometry, Camera* in_camera, ID3D11Device* in_device, ID3D11DeviceContext * in_context)
+{	
+	//initiate managers
+	this->wallManager = WallModelManager(in_camera, in_device, in_context);
+	this->wallManager.initialize(in_geometry);
 
-		auto pos = name.find("_");
-		if (pos == std::string::npos)
-		{
-			exit(-1); //haywire
-		}
-
-		name = name.substr(0, pos - 1);
-		if (name == "Terrain")
-		{
-			this->terrianModels.push_back(TerrainModel(var));
-		}
-		else if (name == "Trunk")
-		{
-			this->trunkModels.push_back(TrunkModel(var));
-		}
-		else if (name == "Leaves")
-		{
-			this->leavesModels.push_back(LeavesModel(var));
-		}
-	}
-}
-
-
-void StaticModelManager::DrawModels()
-{
-
-}
-
-void StaticModelManager::initialize(std::vector<Geometry*> in_var)
-{
-	this->geometry = in_var;
-	this->createModels();
+	//add other managers
+	//here
 }

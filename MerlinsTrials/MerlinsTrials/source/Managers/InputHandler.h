@@ -21,6 +21,7 @@ public:
 	//use the updated current message and check if the input affects our objects
 	void handleCameraInput(Camera * pCamera);
 	void wndChanged(bool &changed);
+	bool dimensionCheck(); //button q
 	bool inMenu = false;
 private:
 	//PRIVATE MEMBERS

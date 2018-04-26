@@ -1,13 +1,15 @@
 #include "stdafx.h"
 #include "ModelBase.h"
 
-ModelBase::ModelBase(Geometry * in_geometry)
+ModelBase::ModelBase(Geometry * in_geometry, ID3D11DeviceContext* in_context)
 {
+	this->context = in_context;
 	this->pGeometry = in_geometry;
 	this->wMatrix = DirectX::XMMatrixIdentity();
-	this->createBoundingOrientBox();
 	this->isSolid = true;
 	this->isVisible = true;
+
+	this->createBoundingOrientBox();
 }
 
 ModelBase::~ModelBase()

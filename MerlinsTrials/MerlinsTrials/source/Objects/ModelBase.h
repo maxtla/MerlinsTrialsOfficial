@@ -16,10 +16,11 @@ protected:
 	DirectX::SimpleMath::Color m_color;
 	DirectX::BoundingOrientedBox m_bb;
 	Geometry * pGeometry;
-	
+	ID3D11DeviceContext* context;
+
 	void createBoundingOrientBox();
 public:
-	ModelBase(Geometry * in_geometry);
+	ModelBase(Geometry * in_geometry, ID3D11DeviceContext* in_context);
 	ModelBase(DirectX::XMMATRIX wMatrix, bool isSolid, bool isVisible) : wMatrix(wMatrix), isSolid(isSolid), isVisible(isVisible) {}
 	virtual ~ModelBase();
 
