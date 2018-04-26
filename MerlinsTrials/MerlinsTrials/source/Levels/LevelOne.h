@@ -21,13 +21,16 @@ public:
 private:
 	ID3D11Device* device;
 	ID3D11DeviceContext * deviceContext;
-	
+	Timer timer;
+	Dimension current_dim;
+	InputHandler* input_handler;
+
 	GeometryManager geoManager;
 	DynamicModelManager dynamicManager;
 	StaticModelManager staticManager;
 
 	Collision collideManager;
-
+	void checkDim();
 public:
 	LevelOne();
 	~LevelOne();
@@ -35,7 +38,7 @@ public:
 	void DrawLevel();
 	void update();
 	void collisionCheck();
-	bool initialize(std::vector<Geometry*> in_geometryVec, ID3D11Device * in_device, ID3D11DeviceContext* in_deviceContext, Camera* player);
+	bool initialize(std::vector<Geometry*> in_geometryVec, ID3D11Device * in_device, ID3D11DeviceContext* in_deviceContext, Player* in_player, InputHandler* in_handler);
 	
 
 

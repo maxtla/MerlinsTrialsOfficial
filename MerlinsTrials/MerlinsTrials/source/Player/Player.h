@@ -10,5 +10,7 @@ private:
 public:
 	Player();
 	~Player();
+
+	Camera* getCamera();
 };
 #endif // !PLAYER_H

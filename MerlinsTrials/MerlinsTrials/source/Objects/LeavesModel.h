@@ -10,7 +10,7 @@ private:
 
 
 public:
-	LeavesModel(Geometry* in_var);
+	LeavesModel(Geometry* in_var, ID3D11DeviceContext* in_context);
 	~LeavesModel();
 
 };

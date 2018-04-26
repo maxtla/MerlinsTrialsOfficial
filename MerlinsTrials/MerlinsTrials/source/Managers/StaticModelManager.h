@@ -3,6 +3,7 @@
 #include"..\Importer\Geometry.h"
 #include"..\Managers\WallModelManager.h"
 #include"..\Managers\InputHandler.h"
+#include"..\Managers\TreeManager.h"
 
 #include"d3d11.h"
 #include<vector>
@@ -10,19 +11,16 @@
 class StaticModelManager
 {
 private:
-	Timer timer;
-	Dimension current_dim;
-	InputHandler* input_handler;
-	WallModelManager wallManager;
 
+	WallModelManager wallManager;
+	TreeManager treeManager;
 	//to add more managers
-	bool checkDim();
+
 public:
 	StaticModelManager();
-	StaticModelManager(InputHandler* in_handler);
 	~StaticModelManager();
 
-	void update();
+	void update(const Dimension &in_dim);
 	void Draw();
 	void initialize(std::vector<Geometry*> in_geometry, Camera* in_camera, ID3D11Device* in_device, ID3D11DeviceContext * in_context);
 

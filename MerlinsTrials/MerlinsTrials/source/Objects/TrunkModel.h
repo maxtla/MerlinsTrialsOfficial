@@ -10,7 +10,7 @@ private:
 	CollisionBox collideBox;
 
 public:
-	TrunkModel(Geometry * in_var);
+	TrunkModel(Geometry * in_var, ID3D11DeviceContext* in_context);
 	~TrunkModel();
 
 	CollisionBox getBoundingBox() const;

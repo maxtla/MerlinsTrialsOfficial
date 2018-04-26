@@ -1,26 +1,25 @@
 #ifndef DYNAMICMODELMANAGER_H
 #define DYNAMICMODELMANAGER_H
 #include"..\Managers\InputHandler.h"
-#include"..\Player\Camera.h"
+#include"..\Player\Player.h"
 #include"..\Importer\Geometry.h"
+#include"..\Helpers\Enumerators.h"
 #include<vector>
 
 class DynamicModelManager
 {
 private:
-	InputHandler* input_handler;
 
 	//add dynamicObjects vectors
 
 	void createModels();
 public:
 	DynamicModelManager();
-	DynamicModelManager(InputHandler* in_input;
 	~DynamicModelManager();
 
-	void update();
+	void update(const Dimension &in_dim);
 	void Draw();
-	void initialize(std::vector<Geometry*> in_geometry, Camera* in_camera, ID3D11Device* in_device, ID3D11DeviceContext* in_context);
+	void initialize(std::vector<Geometry*> in_geometry, Player* in_player, ID3D11Device* in_device, ID3D11DeviceContext* in_context);
 
 
 };

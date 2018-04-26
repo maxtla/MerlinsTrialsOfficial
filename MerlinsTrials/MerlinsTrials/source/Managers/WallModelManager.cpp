@@ -42,24 +42,37 @@ void WallModelManager::createModels(std::vector<Geometry*> in_geometryVec)
 	}
 }
 
-void WallModelManager::update()
+void WallModelManager::update(const Dimension &in_dim)
 {
+	this->current_dim = in_dim;
 
 }
 
-void WallModelManager::Draw(const Dimension &in_dim)
+void WallModelManager::Draw()
 {
 	//setshaders
 	//cullcheck
 
-	for (auto var : this->walls)
+	switch (this->current_dim)
 	{
-		var.Draw();
+	case Dimension::NORMAL:
+		for (auto var : this->walls)
+		{
+			var.Draw();
+		}
+		for (auto var : this->oWalls)
+		{
+			var.Draw();
+		}
+		break;
+	case Dimension::OTHER:
+		for (auto var : this->oWalls)
+		{
+			var.Draw();
+		}		
+		break;
 	}
-	for (auto var : this->oWalls)
-	{
-		var.Draw();
-	}
+
 }
 
 void WallModelManager::initialize(std::vector<Geometry*> in_geometryVec)

@@ -20,7 +20,7 @@ private:
 	Camera* camera;
 	ID3D11Device* device;
 	ID3D11DeviceContext* context;
-
+	Dimension current_dim;
 
 	void createModels(std::vector<Geometry*> in_geometryVec);
 public:
@@ -29,9 +29,9 @@ public:
 	~WallModelManager();
 
 	
-	void update();
-	void Draw(const Dimension &in_dimension);
-	void initialize(std::vector<Geometry*> in_var);
+	void update(const Dimension &in_dim);
+	void Draw();
+	void initialize(std::vector<Geometry*> in_geometry);
 
 };
 #endif // !WALLMODELMANAGER_H

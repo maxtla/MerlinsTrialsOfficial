@@ -1,51 +1,25 @@
 #include "StaticModelManager.h"
 
-bool StaticModelManager::checkDim()
-{	
-	//if key is pressed
-	if (this->input_handler->dimensionCheck())
-	{
-		//check timer on dimension change, 1sec
-		if (this->timer.checkDT(1.0f))
-		{	
-			//normal = 0
-			if (!this->current_dim)
-			{
-				this->current_dim = Dimension::OTHER;
-			}
-			else
-			{
-				this->current_dim = Dimension::NORMAL;
-			}
 
-			this->timer.startTimer();
-		}
-	}
-}
 
 StaticModelManager::StaticModelManager()
 {
-}
-
-StaticModelManager::StaticModelManager(InputHandler* in_handler)
-{
-	this->input_handler = in_handler;
 }
 
 StaticModelManager::~StaticModelManager()
 {
 }
 
-void StaticModelManager::update()
+void StaticModelManager::update(const Dimension &in_dim)
 {
-	this->checkDim();
+	this->wallManager.update(in_dim);
+	this->treeManager.update(in_dim);
 }
 
 void StaticModelManager::Draw()
 {
-	//check dimension and if managers are active
 
-	this->wallManager.Draw(this->current_dim);
+	this->wallManager.Draw();
 	//draw other managers
 
 }
