@@ -5,11 +5,9 @@ TreeManager::TreeManager()
 {
 }
 
-TreeManager::TreeManager(Camera * in_camera, ID3D11Device * in_device, ID3D11DeviceContext * in_context)
+TreeManager::TreeManager(Camera * in_camera, ID3D11Device * in_device, ID3D11DeviceContext * in_context) : ModelManagerBase(in_camera, in_device, in_context)
 {
-	this->camera = in_camera;
-	this->device = in_device;
-	this->context = in_context;
+
 }
 
 TreeManager::~TreeManager()
@@ -37,7 +35,7 @@ void TreeManager::initialize(std::vector<Geometry*> in_geometry)
 	this->createModels(in_geometry);
 }
 
-void TreeManager::creataShaders()
+void TreeManager::createShaders()
 {
 
 }

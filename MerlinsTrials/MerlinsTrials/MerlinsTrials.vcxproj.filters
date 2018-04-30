@@ -81,9 +81,6 @@
     <ClInclude Include="source\Managers\MenuManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
-    <ClInclude Include="source\Managers\TerrainManager.h">
-      <Filter>Managers</Filter>
-    </ClInclude>
     <ClInclude Include="source\Helpers\AssetsPaths.h">
       <Filter>Helpers</Filter>
     </ClInclude>
@@ -142,6 +139,24 @@
       <Filter>Objects</Filter>
     </ClInclude>
     <ClInclude Include="source\Managers\GeometryManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\StaticModelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\WallModelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\LeavesModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\TrunkModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\DynamicModelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\TreeManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
   </ItemGroup>
@@ -216,6 +231,24 @@
       <Filter>Objects</Filter>
     </ClCompile>
     <ClCompile Include="source\Managers\GeometryManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\StaticModelManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\WallModelManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\LeavesModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\TrunkModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\DynamicModelManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\TreeManager.cpp">
       <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>

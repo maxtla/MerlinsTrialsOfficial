@@ -3,27 +3,18 @@
 #include<vector>
 #include"..\Importer\Geometry.h"
 #include"..\Objects\WallModel.h"
-#include"..\Shaders\Shaders.h"
-#include"..\Player\Camera.h"
-#include"..\Helpers\Enumerators.h"
-
+#include"..\Managers\ModelManagerBase.h"
 #define WALLO "WallO"
 #define WALL "Wall"
 
-class WallModelManager
+class WallModelManager : public ModelManagerBase
 {
 private:
 	std::vector<WallModel> walls; //all other walls, can turn invisible
 	std::vector<WallModel> oWalls; //surrounding walls
 	//add more wall types - Brick, wooden etc.
 
-	std::vector<Shaders> shaders;
-
-	Camera* camera;
-	ID3D11Device* device;
-	ID3D11DeviceContext* context;
-	Dimension current_dim;
-
+	void createShaders();
 	void createModels(std::vector<Geometry*> in_geometryVec);
 public:
 	WallModelManager();
@@ -33,7 +24,7 @@ public:
 	
 	void update(const Dimension &in_dim);
 	void Draw();
-	void initialize(std::vector<Geometry*> in_geometry);
+	void initialize(std::vector<Geometry*> in_geometryVec);
 
 };
 #endif // !WALLMODELMANAGER_H

@@ -13,32 +13,29 @@
 class TerrainModel;
 class WallModel;
 
+#define LEVEL_ONE_PATH "TestTri.obj"
+
 class LevelOne
 {	
-public:
-
-
 private:
 	ID3D11Device* device;
 	ID3D11DeviceContext * deviceContext;
-	Timer timer;
-	Dimension current_dim;
-	InputHandler* input_handler;
-
-	GeometryManager geoManager;
+	GeometryManager geometryManager;
 	DynamicModelManager dynamicManager;
 	StaticModelManager staticManager;
 
+	std::vector<Geometry*> geometryVec;
 	Collision collideManager;
-	void checkDim();
+
+	void importLevel();
+	void collisionCheck();
 public:
 	LevelOne();
 	~LevelOne();
 
-	void DrawLevel();
-	void update();
-	void collisionCheck();
-	bool initialize(std::vector<Geometry*> in_geometryVec, ID3D11Device * in_device, ID3D11DeviceContext* in_deviceContext, Player* in_player, InputHandler* in_handler);
+	void Draw();
+	void update(const Dimension &in_dim);
+	void initialize(ID3D11Device * in_device, ID3D11DeviceContext* in_deviceContext, Player* in_player);
 	
 
 

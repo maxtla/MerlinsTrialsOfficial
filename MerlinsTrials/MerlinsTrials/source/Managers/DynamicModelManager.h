@@ -12,7 +12,6 @@ private:
 
 	//add dynamicObjects vectors
 
-	void createModels();
 public:
 	DynamicModelManager();
 	~DynamicModelManager();

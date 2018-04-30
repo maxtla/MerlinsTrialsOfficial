@@ -4,14 +4,15 @@ WallModelManager::WallModelManager()
 {
 }
 
-WallModelManager::WallModelManager(Camera* in_camera, ID3D11Device * in_device, ID3D11DeviceContext * in_context)
+WallModelManager::WallModelManager(Camera* in_camera, ID3D11Device * in_device, ID3D11DeviceContext * in_context) : ModelManagerBase(in_camera, in_device, in_context)
 {
-	this->camera = in_camera;
-	this->device = in_device;
-	this->context = in_context;
 }
 
 WallModelManager::~WallModelManager()
+{
+}
+
+void WallModelManager::createShaders()
 {
 }
 
@@ -52,7 +53,7 @@ void WallModelManager::Draw()
 {
 	//setshaders
 	//cullcheck
-
+	//when OTHER dimension is toggled only the boundry walls are drawn *fake transparent walls*
 	switch (this->current_dim)
 	{
 	case Dimension::NORMAL:

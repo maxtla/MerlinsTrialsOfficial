@@ -2,8 +2,10 @@
 #define STATICMODELMANAGER_H
 #include"..\Importer\Geometry.h"
 #include"..\Managers\WallModelManager.h"
-#include"..\Managers\InputHandler.h"
 #include"..\Managers\TreeManager.h"
+#include"..\Managers\RockModelManager.h"
+
+
 
 #include"d3d11.h"
 #include<vector>
@@ -14,6 +16,7 @@ private:
 
 	WallModelManager wallManager;
 	TreeManager treeManager;
+	RockModelManager rockManager;
 	//to add more managers
 
 public:

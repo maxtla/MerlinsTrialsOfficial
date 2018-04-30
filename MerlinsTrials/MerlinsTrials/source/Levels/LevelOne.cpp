@@ -10,40 +10,24 @@ LevelOne::~LevelOne()
 {
 }
 
-void LevelOne::checkDim()
-{
-	//if key is pressed
-	if (this->input_handler->dimensionCheck())
-	{
-		//check timer on dimension change, 1sec
-		if (this->timer.checkDT(1.0f))
-		{
-			//normal = 0, Other = 1
-			if (this->current_dim)
-			{
-				this->current_dim = Dimension::NORMAL;
-			}
-			else
-			{
-				this->current_dim = Dimension::OTHER;
-			}
-
-			this->timer.startTimer();
-		}
-	}
-}
-
-void LevelOne::DrawLevel()
+void LevelOne::Draw()
 {
 	this->staticManager.Draw();
 	this->dynamicManager.Draw();
 }
 
-void LevelOne::update()
+void LevelOne::importLevel()
 {
-	this->checkDim();
-	this->dynamicManager.update(this->current_dim);
-	this->staticManager.update(this->current_dim);
+	//use whatever function, this->geometryVec for this specific level
+	this->geometryManager.initialize();
+	this->geometryManager.loadAllGeometry();
+}
+
+void LevelOne::update(const Dimension &in_dim)
+{
+	this->collisionCheck();
+	this->dynamicManager.update(in_dim);
+	this->staticManager.update(in_dim);
 }
 
 void LevelOne::collisionCheck()
@@ -53,17 +37,14 @@ void LevelOne::collisionCheck()
 	{
 		//handle
 
-	}
-
-	
+	}	
 }
 
-bool LevelOne::initialize(std::vector<Geometry*> in_geometryVec, ID3D11Device* in_device, ID3D11DeviceContext* in_context, Player* in_player, InputHandler* in_handler)
+void LevelOne::initialize(ID3D11Device* in_device, ID3D11DeviceContext* in_context, Player* in_player)
 {
-	this->input_handler = in_handler;
-	this->dynamicManager.initialize(in_geometryVec, in_player, in_device, in_context);
-	this->staticManager.initialize(in_geometryVec, in_player->getCamera(), in_device, in_context);
+	this->importLevel();
+	this->dynamicManager.initialize(this->geometryVec, in_player, in_device, in_context);
+	this->staticManager.initialize(this->geometryVec, in_player->getCamera(), in_device, in_context);
 
-	return true;
 }
 

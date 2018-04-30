@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "LevelManager.h"
 
-#define PATH_ONE "TestTri.obj"
+
 
 #define NUM_OF_LEVELS 1
 
@@ -16,24 +16,21 @@ LevelManager::~LevelManager()
 	
 }
 
-bool LevelManager::initLevelManager(ID3D11Device * in_device, ID3D11DeviceContext * in_deviceContext, ObjectImporter * in_importer, Player* player)
+void LevelManager::initialize(ID3D11Device * in_device, ID3D11DeviceContext * in_deviceContext, InputHandler* in_handler, Player* in_player)
 {
-	/*bool rValue = false;
 	this->device = in_device;
 	this->deviceContext = in_deviceContext;
-	this->importer = in_importer;
+	this->inputHandler = in_handler;
 
-	rValue = this->levelOne.initialize(this->device, this->importer, PATH_ONE, player);
+	this->levelOne.initialize(in_device, in_deviceContext, in_player);
 
-
-	return rValue;*/
-	return true;
 }
 
-void LevelManager::updateCurrentLevel()
+void LevelManager::update()
 {
 	//other stuff
-	this->levelOne.collisionCheck();
+	this->dimensionCheck();
+	this->levelOne.update(this->cDimension);
 	this->levelOne.Draw();
 
 }
@@ -43,33 +40,28 @@ void LevelManager::changeLevel()
 	this->cLevel++;
 }
 
-void LevelManager::callSwapDimension()
+void LevelManager::dimensionCheck()
 {
 	//swap current dimension use
-	switch (cDimension)
+	//if key is pressed
+	if (this->inputHandler->dimensionCheck())
 	{
-	case NORMAL:
-	{
-		this->cDimension = Dimension::OTHER;
-		
-		for (size_t i = 0; i < this->levelOne.wallModels.size(); i++)
+		//check timer on dimension change, 1sec
+		if (this->timer.checkDT(1.0f))
 		{
-			this->levelOne.wallModels[i].setVisibility(false);
-		}
-		break;
-	}
-	case OTHER:
-	{
-		this->cDimension = Dimension::NORMAL;
+			//normal = 0, Other = 1
+			if (this->cDimension)
+			{
+				this->cDimension = Dimension::NORMAL;
+			}
+			else
+			{
+				this->cDimension = Dimension::OTHER;
+			}
 
-		for (size_t i = 0; i < this->levelOne.wallModels.size(); i++)
-		{
-			this->levelOne.wallModels[i].setVisibility(true);
+			this->timer.startTimer();
 		}
-		break;
 	}
-	}
-
 }
 
 void LevelManager::loadNextLevel()

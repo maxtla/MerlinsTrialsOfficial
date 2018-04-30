@@ -14,20 +14,21 @@ private:
 
 	ID3D11DeviceContext* deviceContext;
 	ID3D11Device* device;
-	ObjectImporter* importer; 
+	InputHandler* inputHandler;
+	Timer timer;
 
 	unsigned int cLevel;
 	Dimension cDimension;
 	
-	bool initiateLevels();
+	void dimensionCheck(); //call function on button hit to change draw call
 public:
 	LevelManager();
 	~LevelManager();
 
-	void updateCurrentLevel(); //draw and collision
+	void update(); //draw and collision
 	void changeLevel();
-	bool initLevelManager(ID3D11Device* in_device, ID3D11DeviceContext * in_deviceContext, ObjectImporter * in_importer, Player* player);
-	void callSwapDimension(); //call function on button hit to change draw call
+	void initialize(ID3D11Device* in_device, ID3D11DeviceContext * in_deviceContext, InputHandler* in_handler, Player* in_player);
+
 	void loadNextLevel();
 
 	unsigned int getNumOfLevels() const;
