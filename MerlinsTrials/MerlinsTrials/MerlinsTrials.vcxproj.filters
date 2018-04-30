@@ -159,6 +159,15 @@
     <ClInclude Include="source\Managers\TreeManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="source\Managers\RockModelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\ModelManagerBase.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\RockModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -250,6 +259,15 @@
     </ClCompile>
     <ClCompile Include="source\Managers\TreeManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\ModelManagerBase.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\RockModelManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\RockModel.cpp">
+      <Filter>Objects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

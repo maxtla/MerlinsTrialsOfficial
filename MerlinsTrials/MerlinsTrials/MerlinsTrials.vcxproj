@@ -173,6 +173,8 @@
     <ClInclude Include="source\Managers\InputHandler.h" />
     <ClInclude Include="source\Managers\LevelManager.h" />
     <ClInclude Include="source\Managers\MenuManager.h" />
+    <ClInclude Include="source\Managers\ModelManagerBase.h" />
+    <ClInclude Include="source\Managers\RockModelManager.h" />
     <ClInclude Include="source\Managers\StaticModelManager.h" />
     <ClInclude Include="source\Managers\TreeManager.h" />
     <ClInclude Include="source\Managers\WallModelManager.h" />
@@ -181,6 +183,7 @@
     <ClInclude Include="source\Menu\MainMenu.h" />
     <ClInclude Include="source\Objects\LeavesModel.h" />
     <ClInclude Include="source\Objects\ModelBase.h" />
+    <ClInclude Include="source\Objects\RockModel.h" />
     <ClInclude Include="source\Objects\TerrainModel.h" />
     <ClInclude Include="source\Objects\TrunkModel.h" />
     <ClInclude Include="source\Objects\WallModel.h" />
@@ -207,6 +210,8 @@
     <ClCompile Include="source\Managers\InputHandler.cpp" />
     <ClCompile Include="source\Managers\LevelManager.cpp" />
     <ClCompile Include="source\Managers\MenuManager.cpp" />
+    <ClCompile Include="source\Managers\ModelManagerBase.cpp" />
+    <ClCompile Include="source\Managers\RockModelManager.cpp" />
     <ClCompile Include="source\Managers\StaticModelManager.cpp" />
     <ClCompile Include="source\Managers\TreeManager.cpp" />
     <ClCompile Include="source\Managers\WallModelManager.cpp" />
@@ -215,6 +220,7 @@
     <ClCompile Include="source\Menu\MainMenu.cpp" />
     <ClCompile Include="source\Objects\LeavesModel.cpp" />
     <ClCompile Include="source\Objects\ModelBase.cpp" />
+    <ClCompile Include="source\Objects\RockModel.cpp" />
     <ClCompile Include="source\Objects\TerrainModel.cpp" />
     <ClCompile Include="source\Objects\TrunkModel.cpp" />
     <ClCompile Include="source\Objects\WallModel.cpp" />

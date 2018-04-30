@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Collision">
+      <UniqueIdentifier>{baa7623b-a6e7-459c-8d12-e825b74852fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engines">
+      <UniqueIdentifier>{cefcbbbd-ef75-40a4-b145-121b9bd14d97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Managers">
+      <UniqueIdentifier>{071e04e1-7ac1-4af9-bfd6-6104a42f51c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Helpers">
+      <UniqueIdentifier>{64a369be-6fb8-4f67-ac4e-a91c0c928ec4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Importer">
+      <UniqueIdentifier>{13eed585-0b79-4f16-af49-b13e36e2f3dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Levels">
+      <UniqueIdentifier>{dfa311b9-5404-41a4-a8ec-98a7e3849d25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Menu">
+      <UniqueIdentifier>{6da6d0a0-922f-4ebe-bfe8-9ae794f7d0ff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Objects">
+      <UniqueIdentifier>{b4c91731-e848-4628-a9ae-a67f97225986}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Player">
+      <UniqueIdentifier>{4d0ab22b-9361-4fe9-9a3c-2da79a261114}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{6fe3d309-92d0-4c58-824c-df8e30a53a97}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Window">
+      <UniqueIdentifier>{103d5670-b121-43a2-a374-256d03c9de92}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="stdafx.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Main.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Collision\Collision.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Collision\CollisionBox.h">
+      <Filter>Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Engines\Direct2DEngine.h">
+      <Filter>Engines</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Engines\Direct3DEngine.h">
+      <Filter>Engines</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\InputHandler.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\LevelManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\MenuManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\TerrainManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\AssetsPaths.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\Enumerators.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\StructHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Helpers\Timer.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Importer\ObjectImporter.h">
+      <Filter>Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Levels\Level.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Levels\LevelOne.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Levels\test_scene.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Menu\Background.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Menu\Button.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Menu\MainMenu.h">
+      <Filter>Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Camera.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Player\Player.h">
+      <Filter>Player</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Window\Window.h">
+      <Filter>Window</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\ModelBase.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\TerrainModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\WallModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Importer\Mesh.h">
+      <Filter>Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\MeshManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\WallManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Shaders\BasicShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Shaders\NormalMapShader.h">
+      <Filter>Shaders</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collision\Collision.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collision\CollisionBox.cpp">
+      <Filter>Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Engines\Direct2DEngine.cpp">
+      <Filter>Engines</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Engines\Direct3DEngine.cpp">
+      <Filter>Engines</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\InputHandler.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\LevelManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\MenuManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Importer\ObjectImporter.cpp">
+      <Filter>Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Levels\Level.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Levels\LevelOne.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Levels\TEST_SCENE.cpp">
+      <Filter>Levels</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Menu\Background.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Menu\Button.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Menu\MainMenu.cpp">
+      <Filter>Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Camera.cpp">
+      <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Window\Window.cpp">
+      <Filter>Window</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\ModelBase.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\TerrainModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\WallModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Importer\Mesh.cpp">
+      <Filter>Importer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\MeshManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\WallManager.cpp">
+      <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shaders\BasicShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Shaders\NormalMapShader.cpp">
+      <Filter>Shaders</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="MerlinsTrials.rc">
+      <Filter>Resource Files</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="small.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="MerlinsTrialsOfficial.ico">
+      <Filter>Resource Files</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+</Project>
