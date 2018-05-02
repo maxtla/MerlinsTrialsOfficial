@@ -17,7 +17,7 @@ TEST_SCENE::~TEST_SCENE()
 	pBrush->Release();
 }
 
-void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,InputHandler * pInputHandler)
+void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine, InputHandler * pInputHandler)
 {
 	pMeshManager = new MeshManager();
 	pWallManager = new WallManager();
@@ -39,11 +39,14 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 	m_shape = DirectX::GeometricPrimitive::CreateTeapot(p3DEngine->pDevCon.Get(), 0.5f, 16U, true);
 	m_world = DirectX::SimpleMath::Matrix::Identity;
 	
+	pInteraction = new Interaction();
+
+
 	if (!pMeshManager->loadAllGeometry())
 		exit(-1);
 	if (!pWallManager->initialize(pMeshManager->getWalls(), p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get()))
 		exit(-1);
-	if (!this->pCubeManager->initialize(this->pMeshManager->getWalls(), p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get()))
+	if (!this->pCubeManager->initialize(this->pMeshManager->getWalls(), p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get(), pCamera, pInteraction))
 		exit(-1);
 	
 	D3D11_RASTERIZER_DESC rsDesc;
@@ -86,6 +89,7 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 void TEST_SCENE::Update()
 {
 	pInputHandler->handleCameraInput(pCamera);
+	pInputHandler->handleInteractions(pInteraction);
 	pCamera->update();
 	pWallManager->Update();
 	this->pCubeManager->update();
@@ -109,7 +113,6 @@ void TEST_SCENE::camInfoToScreen()
 	rect.bottom = rect.right = 200;
 
 	DirectX::BoundingOrientedBox box;
-	box.Intersects(this->pCamera->getCamPos(), this->pCamera->getCamForward(), 20.0f);
 
 	pD2DEngine->textToScreen(info, pTextFormat, &rect, pBrush);
 }

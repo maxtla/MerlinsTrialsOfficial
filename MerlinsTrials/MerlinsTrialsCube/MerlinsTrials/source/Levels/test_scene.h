@@ -4,6 +4,7 @@
 
 #include "..\Player\Camera.h"
 #include "..\Managers\InputHandler.h"
+#include "..\Player\Interaction.h"
 #include <GeometricPrimitive.h>
 #include "..\Engines\Direct3DEngine.h"
 #include "..\Engines\Direct2DEngine.h"
@@ -30,6 +31,7 @@ private:
 	InputHandler * pInputHandler;
 	WallManager * pWallManager;
 	CubeManager * pCubeManager;
+	Interaction * pInteraction;
 	ID3D11RasterizerState * noCull;
 
 	//geometry to render

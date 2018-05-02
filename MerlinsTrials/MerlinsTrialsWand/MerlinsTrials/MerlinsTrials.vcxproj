@@ -169,6 +169,7 @@
     <ClInclude Include="source\Levels\Level.h" />
     <ClInclude Include="source\Levels\LevelOne.h" />
     <ClInclude Include="source\Levels\test_scene.h" />
+    <ClInclude Include="source\Managers\CubeManager.h" />
     <ClInclude Include="source\Managers\MeshManager.h" />
     <ClInclude Include="source\Managers\InputHandler.h" />
     <ClInclude Include="source\Managers\LevelManager.h" />
@@ -178,11 +179,13 @@
     <ClInclude Include="source\Menu\Background.h" />
     <ClInclude Include="source\Menu\Button.h" />
     <ClInclude Include="source\Menu\MainMenu.h" />
+    <ClInclude Include="source\Objects\CubeModel.h" />
     <ClInclude Include="source\Objects\ModelBase.h" />
     <ClInclude Include="source\Objects\TerrainModel.h" />
     <ClInclude Include="source\Objects\WallModel.h" />
     <ClInclude Include="source\Objects\WandModel.h" />
     <ClInclude Include="source\Player\Camera.h" />
+    <ClInclude Include="source\Player\Interaction.h" />
     <ClInclude Include="source\Player\Player.h" />
     <ClInclude Include="source\Shaders\BasicShader.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -204,6 +207,7 @@
     <ClCompile Include="source\Levels\Level.cpp" />
     <ClCompile Include="source\Levels\LevelOne.cpp" />
     <ClCompile Include="source\Levels\TEST_SCENE.cpp" />
+    <ClCompile Include="source\Managers\CubeManager.cpp" />
     <ClCompile Include="source\Managers\MeshManager.cpp" />
     <ClCompile Include="source\Managers\InputHandler.cpp" />
     <ClCompile Include="source\Managers\LevelManager.cpp" />
@@ -212,11 +216,13 @@
     <ClCompile Include="source\Menu\Background.cpp" />
     <ClCompile Include="source\Menu\Button.cpp" />
     <ClCompile Include="source\Menu\MainMenu.cpp" />
+    <ClCompile Include="source\Objects\CubeModel.cpp" />
     <ClCompile Include="source\Objects\ModelBase.cpp" />
     <ClCompile Include="source\Objects\TerrainModel.cpp" />
     <ClCompile Include="source\Objects\WallModel.cpp" />
     <ClCompile Include="source\Objects\WandModel.cpp" />
     <ClCompile Include="source\Player\Camera.cpp" />
+    <ClCompile Include="source\Player\Interaction.cpp" />
     <ClCompile Include="source\Shaders\BasicShader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>

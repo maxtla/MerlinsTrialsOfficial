@@ -77,6 +77,21 @@ void InputHandler::handleCameraInput(Camera * pCamera)
 		m_mouse->SetMode(DirectX::Mouse::MODE_RELATIVE);
 }
 
+void InputHandler::handleInteractions(Interaction * pInteraction)
+{
+	if (m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+	{
+		if (pInteraction->getEState())
+		{
+			pInteraction->setEState(false);
+		}
+		else
+		{
+			pInteraction->setEState(true);
+		}
+	}
+}
+
 void InputHandler::wndChanged(bool & changed)
 {
 	if (changed)

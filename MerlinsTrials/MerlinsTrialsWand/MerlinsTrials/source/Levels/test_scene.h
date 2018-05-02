@@ -10,6 +10,8 @@
 #include "..\Managers\MeshManager.h"
 #include "..\Managers\WallManager.h"
 #include"..\Objects\WandModel.h"
+#include "..\Managers\CubeManager.h"
+#include "..\Player\Interaction.h"
 #include "Level.h"
 #include <d3d11.h>
 #include <SimpleMath.h>
@@ -32,7 +34,8 @@ private:
 	WallManager * pWallManager;
 	Level * levelOne;
 	BasicShader * pBasicColorShader;
-
+	CubeManager * pCubeManager;
+	Interaction * pInteraction;
 	ID3D11RasterizerState * noCull;
 
 	//Wand

@@ -6,6 +6,7 @@
 #include "Mouse.h"
 //use a direct input approach where each class object is modified by the current matched input message per frame
 #include "..\Player\Camera.h"
+#include"..\Player\Interaction.h"
 
 class InputHandler
 {
@@ -20,6 +21,7 @@ public:
 	void resetMouseMode();
 	//use the updated current message and check if the input affects our objects
 	void handleCameraInput(Camera * pCamera);
+	void handleInteractions(Interaction * pInteraction);
 	void wndChanged(bool &changed);
 	bool inMenu = false;
 private:

@@ -7,6 +7,8 @@ class Player
 private:
 	Camera * camera;
 
+	bool holdingItem = false;
+
 public:
 	Player();
 	~Player();

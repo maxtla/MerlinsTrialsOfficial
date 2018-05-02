@@ -19,7 +19,7 @@ void CubeModel::setNormalMapShader(NormalMapShader * in_shader)
 
 DirectX::BoundingOrientedBox CubeModel::getBoundingBox()
 {
-	return this->m_Meshes[0]->m_bb;
+	return this->m_Meshes[0]->m_OBB;
 }
 
 float CubeModel::getGrabDistance() const

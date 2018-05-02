@@ -24,6 +24,8 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 {
 	pMeshManager = new MeshManager();
 	pWallManager = new WallManager();
+	pCubeManager = new CubeManager();
+
 	levelOne = new Level();
 	pMeshManager->initialize(p3DEngine->pDev.Get(), p3DEngine->pDevCon.Get());
 
@@ -45,6 +47,8 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 	m_shape = DirectX::GeometricPrimitive::CreateTeapot(p3DEngine->pDevCon.Get(), 0.5f, 16U, true);
 	m_world = DirectX::SimpleMath::Matrix::Identity;
 	
+	pInteraction = new Interaction();
+
 	if (!pMeshManager->loadAllGeometry())
 		exit(-1);
 
@@ -53,6 +57,10 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 
 	if (!levelOne->initialize(pMeshManager->getStaticLevels()[0], pBasicColorShader))
 		exit(-1);
+
+	if (!this->pCubeManager->initialize(this->pMeshManager->getWalls(), p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get(), pCamera, pInteraction))
+		exit(-1);
+
 
 	//Init Wand
 	this->wand.init(this->pMeshManager->getWand(), p3DEngine->pDev.Get(), p3DEngine->pDevCon.Get());
@@ -99,10 +107,11 @@ void TEST_SCENE::Update()
 {
 	pInputHandler->handleCameraInput(pCamera);
 	pCamera->update();
-
+	pInputHandler->handleInteractions(pInteraction);
 	//Update wand
 	this->wand.update(this->pCamera->getView());
-
+	
+	this->pCubeManager->update();
 	pWallManager->Update();
 	levelOne->Update();
 }
@@ -116,6 +125,7 @@ void TEST_SCENE::Draw()
 	//Draw wand
 	this->wand.draw(this->pCamera->getProjection(), this->pCamera->getView());
 
+	this->pCubeManager->Draw(this->pCamera->getProjection(), this->pCamera->getView());
 	//camInfoToScreen();
 }
 

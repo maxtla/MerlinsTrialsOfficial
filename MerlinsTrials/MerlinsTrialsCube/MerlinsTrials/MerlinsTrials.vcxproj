@@ -183,6 +183,7 @@
     <ClInclude Include="source\Objects\TerrainModel.h" />
     <ClInclude Include="source\Objects\WallModel.h" />
     <ClInclude Include="source\Player\Camera.h" />
+    <ClInclude Include="source\Player\Interaction.h" />
     <ClInclude Include="source\Player\Player.h" />
     <ClInclude Include="source\Shaders\BasicShader.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
@@ -218,6 +219,7 @@
     <ClCompile Include="source\Objects\TerrainModel.cpp" />
     <ClCompile Include="source\Objects\WallModel.cpp" />
     <ClCompile Include="source\Player\Camera.cpp" />
+    <ClCompile Include="source\Player\Interaction.cpp" />
     <ClCompile Include="source\Shaders\BasicShader.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</ExcludedFromBuild>

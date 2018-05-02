@@ -26,7 +26,7 @@ bool CubeManager::initialize(std::vector<std::vector<Mesh*>> const &meshes, ID3D
 	m_NormalMapShader->createShader(NORMALMAP_SHADER_TYPE::NO_COLOR);
 	int id = 0;
 	id = this->generateUniqueID(id);
-	CubeModel * cModel = new CubeModel(DirectX::XMMatrixTranslation(1.0f, 1.0f, 1.0f), true, true, id);
+	CubeModel * cModel = new CubeModel(DirectX::XMMatrixTranslation(1.0f, -10.0f, 1.0f), true, true, id);
 
 	cModel->setMeshes(meshes[0]);
 	cModel->setNormalMapShader(this->m_NormalMapShader);

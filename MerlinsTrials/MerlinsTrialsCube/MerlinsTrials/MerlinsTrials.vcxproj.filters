@@ -156,6 +156,9 @@
     <ClInclude Include="source\Managers\CubeManager.h">
       <Filter>Managers</Filter>
     </ClInclude>
+    <ClInclude Include="source\Player\Interaction.h">
+      <Filter>Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -241,6 +244,9 @@
     </ClCompile>
     <ClCompile Include="source\Managers\CubeManager.cpp">
       <Filter>Managers</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Player\Interaction.cpp">
+      <Filter>Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

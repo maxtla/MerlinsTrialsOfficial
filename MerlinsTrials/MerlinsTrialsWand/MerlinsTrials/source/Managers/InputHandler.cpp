@@ -85,6 +85,21 @@ void InputHandler::wndChanged(bool & changed)
 	}
 }
 
+void InputHandler::handleInteractions(Interaction * pInteraction)
+{
+	if (m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+	{
+		if (pInteraction->getEState())
+		{
+			pInteraction->setEState(false);
+		}
+		else
+		{
+			pInteraction->setEState(true);
+		}
+	}
+}
+
 void InputHandler::clampToPi(float & value)
 {
 	value = std::fmax(-0.5f*DirectX::XM_PI, std::fmin(value, 0.5f*DirectX::XM_PI));
