@@ -16,18 +16,17 @@ protected:
 	bool isSolid;
 	bool isVisible;
 	DirectX::SimpleMath::Color m_color;
-	DirectX::BoundingOrientedBox m_bb;
 	std::vector<Mesh*> m_Meshes;
-
+	Mesh* c_Mesh;
 
 	void createBoundongOrientBox();
 public:
-	ModelBase(DirectX::XMMATRIX wMatrix, bool isSolid, bool isVisible) : wMatrix(wMatrix), isSolid(isSolid), isVisible(isVisible) {}
+	ModelBase(DirectX::XMMATRIX wMatrix, bool isSolid, bool isVisible) : wMatrix(wMatrix), isSolid(isSolid), isVisible(isVisible) { }
 
 	virtual ~ModelBase();
-
 	void setWorldMatrix(const DirectX::XMMATRIX &in_wMatrix);
-	void setMeshes(std::vector<Mesh*> meshes) { this->m_Meshes = meshes; }
+	void setMeshes(std::vector<Mesh*> meshes);
+	void setMeshes(Mesh* c_Mesh);
 	DirectX::XMMATRIX getWorld() const;
 };
 #endif // !MODELBASE_H

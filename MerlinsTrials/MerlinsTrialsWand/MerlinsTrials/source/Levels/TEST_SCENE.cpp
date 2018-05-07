@@ -58,7 +58,8 @@ void TEST_SCENE::Init(Direct3DEngine * p3DEngine, Direct2DEngine * p2DEngine,Inp
 	if (!levelOne->initialize(pMeshManager->getStaticLevels()[0], pBasicColorShader))
 		exit(-1);
 
-	if (!this->pCubeManager->initialize(this->pMeshManager->getWalls(), p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get(), pCamera, pInteraction))
+	if (!this->pCubeManager->initialize(this->pMeshManager->getWalls(), this->pMeshManager->getPedestals(),
+		p3DEngine->pDevCon.Get(), p3DEngine->pDev.Get(), pCamera, pInteraction))
 		exit(-1);
 
 

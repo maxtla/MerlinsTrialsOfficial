@@ -102,9 +102,6 @@
     <ClInclude Include="source\Levels\Level.h">
       <Filter>Levels</Filter>
     </ClInclude>
-    <ClInclude Include="source\Levels\LevelOne.h">
-      <Filter>Levels</Filter>
-    </ClInclude>
     <ClInclude Include="source\Levels\test_scene.h">
       <Filter>Levels</Filter>
     </ClInclude>
@@ -165,6 +162,12 @@
     <ClInclude Include="source\Player\Interaction.h">
       <Filter>Player</Filter>
     </ClInclude>
+    <ClInclude Include="source\Objects\PedestalModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Levels\LevelOne.h">
+      <Filter>Levels</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -198,9 +201,6 @@
       <Filter>Importer</Filter>
     </ClCompile>
     <ClCompile Include="source\Levels\Level.cpp">
-      <Filter>Levels</Filter>
-    </ClCompile>
-    <ClCompile Include="source\Levels\LevelOne.cpp">
       <Filter>Levels</Filter>
     </ClCompile>
     <ClCompile Include="source\Levels\TEST_SCENE.cpp">
@@ -256,6 +256,12 @@
     </ClCompile>
     <ClCompile Include="source\Player\Interaction.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\PedestalModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Levels\LevelOne.cpp">
+      <Filter>Levels</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

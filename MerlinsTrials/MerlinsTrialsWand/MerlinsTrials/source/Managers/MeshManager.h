@@ -19,6 +19,7 @@ public:
 	std::vector<std::vector<Mesh*>> getWalls() const { return this->m_Walls; }
 	std::vector<std::vector<Mesh*>> getStaticLevels() const { return this->m_StaticLevels; }
 	std::vector<Mesh*> getWand() const { return this->m_Wand; }
+	std::vector<Mesh*> getPedestals() const { return this->m_pedestals; }
 
 private:
 	ObjectImporter * pObjectImporter = nullptr;
@@ -26,6 +27,7 @@ private:
 	ID3D11DeviceContext * pDevCon;
 	//store geometry pointers and associate models with its type
 	std::vector<std::vector<Mesh*>> m_Walls;
+	std::vector<Mesh*> m_pedestals;
 	std::vector<Mesh*> m_Wand;
 	std::vector<std::vector<Mesh*>> m_StaticLevels;
 

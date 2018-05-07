@@ -181,6 +181,7 @@
     <ClInclude Include="source\Menu\MainMenu.h" />
     <ClInclude Include="source\Objects\CubeModel.h" />
     <ClInclude Include="source\Objects\ModelBase.h" />
+    <ClInclude Include="source\Objects\PedestalModel.h" />
     <ClInclude Include="source\Objects\TerrainModel.h" />
     <ClInclude Include="source\Objects\WallModel.h" />
     <ClInclude Include="source\Objects\WandModel.h" />
@@ -218,6 +219,7 @@
     <ClCompile Include="source\Menu\MainMenu.cpp" />
     <ClCompile Include="source\Objects\CubeModel.cpp" />
     <ClCompile Include="source\Objects\ModelBase.cpp" />
+    <ClCompile Include="source\Objects\PedestalModel.cpp" />
     <ClCompile Include="source\Objects\TerrainModel.cpp" />
     <ClCompile Include="source\Objects\WallModel.cpp" />
     <ClCompile Include="source\Objects\WandModel.cpp" />

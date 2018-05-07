@@ -9,8 +9,8 @@ CubeManager::~CubeManager()
 {
 }
 
-bool CubeManager::initialize(std::vector<std::vector<Mesh*>> const &meshes, ID3D11DeviceContext * pDevCon,
-							ID3D11Device * pDev, Camera* pCam, Interaction* pInteraction)
+bool CubeManager::initialize(std::vector<std::vector<Mesh*>> const &cubes, std::vector<Mesh*> const &pedestals,
+	ID3D11DeviceContext * pDevCon, ID3D11Device * pDev, Camera* pCam, Interaction* pInteraction)
 {
 	this->context = pDevCon;
 	this->device = pDev;
@@ -21,30 +21,60 @@ bool CubeManager::initialize(std::vector<std::vector<Mesh*>> const &meshes, ID3D
 	m_NormalMapShader = new NormalMapShader();
 
 	m_BasicShader->init(pDev, pDevCon);
-	m_BasicShader->createShader(SHADERTYPE::VertexPosNormTex);
+	m_BasicShader->createShader(SHADERTYPE::VertexPosNormCol);
 	m_NormalMapShader->init(pDev, pDevCon);
 	m_NormalMapShader->createShader(NORMALMAP_SHADER_TYPE::NO_COLOR);
+
+	//update id between each new cube model, increment by one to fit cube vector position
 	int id = 0;
-	id = this->generateUniqueID(id);
 	CubeModel * cModel = new CubeModel(DirectX::XMMatrixTranslation(1.0f, -10.0f, 1.0f), true, true, id);
-
-	cModel->setMeshes(meshes[0]);
+	cModel->setMeshes(cubes[0]);
 	cModel->setNormalMapShader(this->m_NormalMapShader);
-
 	this->m_cubes.push_back(cModel);
-	this->cube_map.insert(std::pair<int, CubeModel*>(id, cModel));
 
+	Matrix world = Matrix::CreateRotationZ(DirectX::XM_PI);
+	PedestalModel * cPedestal = new PedestalModel(world * XMMatrixTranslation(0.0f, -10.0f, 0.0f), true, true, id);
+	cPedestal->setMeshes(pedestals[0]);
+	cPedestal->setBasicShader(m_BasicShader);
+	this->m_pedestals.push_back(cPedestal);
+	
 
 	return true;
+}
+
+bool CubeManager::checkBoxPedestal()
+{
+	CubeModel* cModel = this->m_cubes[this->lastPickedCubeID];
+	PedestalModel * pModel = this->m_pedestals[this->lastPickedCubeID];
+	
+	DirectX::XMMATRIX cXMM = cModel->getWorld();
+	DirectX::XMMATRIX pXMM = pModel->getWorld();
+
+	DirectX::BoundingOrientedBox cBox = cModel->getBoundingBox();
+	DirectX::BoundingBox pBox = pModel->getBoundingBox();
+
+	cBox.Transform(cBox, cXMM);
+	pBox.Transform(pBox, pXMM);
+
+	if (cBox.Intersects(pBox))
+	{
+		return true;
+	}
+
+	return false;
 }
 
 void CubeManager::update()
 {
 	//if E is pressed
+
 	if (pInteraction->getEState())
 	{
 		switch (this->checkCollision())
 		{
+		case 0:
+			this->updateCube(0);
+			break;
 		case 1:
 			this->updateCube(1);
 			break;
@@ -54,20 +84,16 @@ void CubeManager::update()
 		case 3:
 			this->updateCube(3);
 			break;
-		case 4:
-			this->updateCube(4);
-			break;
 		case -1:
 			pInteraction->setEState(false);
 			break;
 		}
 	}
 
-	for (auto var : this->m_cubes)
+	if (pInteraction->getEState() && this->checkBoxPedestal())
 	{
-		var->update();
+		pInteraction->setEState(false);
 	}
-	
 
 }
 
@@ -84,19 +110,30 @@ void CubeManager::Draw(DirectX::XMMATRIX in_Proj, DirectX::XMMATRIX in_View)
 	{
 		var->Draw(this->context, in_View, in_Proj);
 	}
+
+	for (auto var : this->m_pedestals)
+	{
+		var->Draw(this->context, in_View, in_Proj);
+	}
 }
 
 void CubeManager::updateCube(const int & n)
 {
-	CubeModel * model = cube_map[n];
-	Vector3 vec = pCam->getCamPos() + pCam->getCamForward();
-	DirectX::XMMATRIX newW = XMMatrixMultiply(XMMatrixTranslation(vec.x, vec.y, vec.z), model->getWorld());
-	model->setWorldMatrix(newW);
-}
+	CubeModel * model = m_cubes[n];
+	XMFLOAT3 xmf = pCam->getCamPos();
+	//Vector3 vec3 = -pCam->getCamForward() * Vector3(5.f, 5.f, 5.f);
+	//Vector3 vec = DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&vec3), DirectX::XMLoadFloat3(&xmf));
+	Vector3 vec = Vector3(0.0f, 0.0f, -3.0f);
 
-int CubeManager::generateUniqueID(int n)
-{
-	return n++;
+	XMMATRIX newW = XMMatrixIdentity();
+	//XMMATRIX rot = XMMatrixRotationRollPitchYaw(this->pCam->getCamPitch(), 0.0f, 0.0f);
+	XMMATRIX transl = XMMatrixTranslation(vec.x, vec.y, vec.z);
+	XMMATRIX scale = XMMatrixIdentity(); //DirectX::XMMatrixScaling(0.3f, 0.3f, 0.3f);
+
+	XMMATRIX invView = XMMatrixInverse(&XMMatrixDeterminant(this->pCam->getView()), this->pCam->getView());
+
+	newW =  transl * invView;
+	model->setWorldMatrix(newW);
 }
 
 int CubeManager::checkCollision()
@@ -108,15 +145,20 @@ int CubeManager::checkCollision()
 
 	for (auto var : this->m_cubes)
 	{
-		if (var->getBoundingBox().Intersects(camPos, forwardVec, distance))
+		DirectX::BoundingOrientedBox box = var->getBoundingBox();
+		box.Transform(box, var->getWorld());
+		//camPos = DirectX::XMVector3Transform(camPos, DirectX::XMMatrixInverse(&DirectX::XMMatrixDeterminant(var->getWorld()), var->getWorld()));
+		if (box.Intersects(-camPos, forwardVec, distance))
 		{
 			//Intersects
 			if (distance <= var->getGrabDistance())
 			{
 				//within range
+				this->lastPickedCubeID = var->getID();
 				return var->getID();
 			}
 		}
 	}
+
 	return -1;
 }

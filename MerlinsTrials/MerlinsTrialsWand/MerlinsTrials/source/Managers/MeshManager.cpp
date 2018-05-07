@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MeshManager.h"
-
-
+#include<iostream>
+#include<fstream>
 MeshManager::MeshManager()
 {
 }
@@ -86,6 +86,20 @@ bool MeshManager::loadStaticLevels()
 
 	if (!pObjectImporter->importLevel(pathAndIndex[0], m_StaticLevels[index], pDev, pDevCon))
 		return false;
-
+	
+	int nr = 0;
+	//seperate pedestals
+	for (size_t i = 0; i < m_StaticLevels.size(); i++)
+	{
+		for (size_t j = 0; j < m_StaticLevels[i].size(); j++)
+		{
+			if (m_StaticLevels[i][j]->getName() == "Pedestal")
+			{
+				m_pedestals.push_back(m_StaticLevels[i][j]);
+				nr++;
+			}
+				
+		}
+	}
 	return true;
 }

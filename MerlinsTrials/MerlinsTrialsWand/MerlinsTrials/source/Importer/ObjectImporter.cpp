@@ -279,8 +279,10 @@ bool ObjectImporter::importLevel(const std::string &path, std::vector<Mesh*> &pp
 		aiColor3D cColor(0.0f, 0.0f, 0.0f);
 		float nsSpecularExponent = 0.0f;
 		float dOpacity = 0.0f;
-
-		ppMesh[i]->setName(t_mesh->mName.C_Str());
+		std::string str = t_mesh->mName.C_Str();
+		auto pos = str.find("_");
+		str = str.substr(0, pos);
+		ppMesh[i]->setName(str);
 
 		//handle the faces and fill the index buffer
 		if (t_mesh->HasFaces())
@@ -298,10 +300,13 @@ bool ObjectImporter::importLevel(const std::string &path, std::vector<Mesh*> &pp
 		ppMesh[i]->setFaceCount(t_mesh->mNumFaces);
 		mtl->Get(AI_MATKEY_NAME, aiName);
 		std::string t_str = aiName.C_Str();
+
 		int flag = t_str[aiName.length - 1] - '0';
+		
 		//get the scaling value which is embedded in Index of Refract
 		float scaling = 1.0f;
 		mtl->Get(AI_MATKEY_REFRACTI, scaling);
+		
 		//retrieve the vertex color from the material
 		mtl->Get(AI_MATKEY_COLOR_EMISSIVE, cColor);
 		vec3 = DirectX::SimpleMath::Vector3(cColor.r, cColor.g, cColor.b);

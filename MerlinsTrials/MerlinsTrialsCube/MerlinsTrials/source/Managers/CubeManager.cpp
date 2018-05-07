@@ -24,16 +24,13 @@ bool CubeManager::initialize(std::vector<std::vector<Mesh*>> const &meshes, ID3D
 	m_BasicShader->createShader(SHADERTYPE::VertexPosNormTex);
 	m_NormalMapShader->init(pDev, pDevCon);
 	m_NormalMapShader->createShader(NORMALMAP_SHADER_TYPE::NO_COLOR);
-	int id = 0;
-	id = this->generateUniqueID(id);
-	CubeModel * cModel = new CubeModel(DirectX::XMMatrixTranslation(1.0f, 1.0f, 1.0f), true, true, id);
+	
+	CubeModel * cModel = new CubeModel(DirectX::XMMatrixTranslation(1.0f, 1.0f, 1.0f), true, true, 0);
 
 	cModel->setMeshes(meshes[0]);
 	cModel->setNormalMapShader(this->m_NormalMapShader);
 
 	this->m_cubes.push_back(cModel);
-	this->cube_map.insert(std::pair<int, CubeModel*>(id, cModel));
-
 
 	return true;
 }
@@ -46,16 +43,16 @@ void CubeManager::update()
 		switch (this->checkCollision())
 		{
 		case 1:
-			this->updateCube(1);
+			this->updateCube(0);
 			break;
 		case 2:
-			this->updateCube(2);
+			this->updateCube(1);
 			break;
 		case 3:
-			this->updateCube(3);
+			this->updateCube(2);
 			break;
 		case 4:
-			this->updateCube(4);
+			this->updateCube(3);
 			break;
 		case -1:
 			pInteraction->setEState(false);

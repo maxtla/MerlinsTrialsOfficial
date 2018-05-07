@@ -7,6 +7,7 @@
 #include"..\Player\Player.h"
 #include"..\Managers\InputHandler.h"
 #include"..\Player\Interaction.h"
+#include"..\Objects\PedestalModel.h"
 #include<map>
 
 class CubeManager
@@ -15,7 +16,8 @@ private:
 	ID3D11DeviceContext * context;
 	ID3D11Device * device;
 	std::vector<CubeModel*> m_cubes;
-	std::map<int, CubeModel*> cube_map;
+	std::vector<PedestalModel*> m_pedestals;
+	int lastPickedCubeID = -1;
 
 	Camera * pCam;
 	Player * pPlayer;
@@ -23,16 +25,16 @@ private:
 
 	BasicShader * m_BasicShader;
 	NormalMapShader * m_NormalMapShader;
-	bool isMoveable = true ;
 	
+
 	void updateCube(const int &n);
-	int generateUniqueID(int n);
 	int checkCollision();
+	bool checkBoxPedestal();
 public:
 	CubeManager();
 	~CubeManager();
-	bool initialize(std::vector<std::vector<Mesh*>> const &wallModels, ID3D11DeviceContext * pDevCon, 
-					ID3D11Device* pDev, Camera* pCam, Interaction* pInteraction);
+	bool initialize(std::vector<std::vector<Mesh*>> const &cubes, std::vector<Mesh*> const &pedestals, 
+					ID3D11DeviceContext * pDevCon, ID3D11Device* pDev, Camera* pCam, Interaction* pInteraction);
 
 	void update();
 	void Draw(DirectX::XMMATRIX in_Proj, DirectX::XMMATRIX in_View);

@@ -87,17 +87,33 @@ void InputHandler::wndChanged(bool & changed)
 
 void InputHandler::handleInteractions(Interaction * pInteraction)
 {
-	if (m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+
+	if (!pInteraction->getEState() && !this->val && m_tracker.IsKeyPressed(DirectX::Keyboard::E))
 	{
-		if (pInteraction->getEState())
-		{
-			pInteraction->setEState(false);
-		}
-		else
-		{
-			pInteraction->setEState(true);
-		}
+		pInteraction->setEState(true);
+		this->val = true;
 	}
+	else if (pInteraction->getEState() && !this->val && m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+	{
+		pInteraction->setEState(false);
+		this->val = true;
+	}
+
+	if (m_tracker.IsKeyReleased(DirectX::Keyboard::E))
+	{
+		this->val = false;
+	}
+
+	//if (!pInteraction->getEState() && m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+	//{
+	//	pInteraction->setEState(true);
+	//	this->val = true;
+	//}
+	//else if (pInteraction && m_tracker.IsKeyPressed(DirectX::Keyboard::E))
+	//{
+	//	pInteraction->setEState(false);
+	//}
+
 }
 
 void InputHandler::clampToPi(float & value)

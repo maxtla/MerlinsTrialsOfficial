@@ -30,7 +30,7 @@ private:
 	MSG m_msg;
 	UINT currentMsg;
 	BOOL hasMsg;
-	
+	bool val = false;
 	std::unique_ptr<DirectX::Keyboard> m_keyboard;
 	std::unique_ptr<DirectX::Mouse> m_mouse;
 	DirectX::Mouse::State m_mouseState;
