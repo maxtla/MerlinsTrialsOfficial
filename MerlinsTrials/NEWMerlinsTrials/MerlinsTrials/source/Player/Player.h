@@ -17,7 +17,14 @@ private:
 	//D3D11 Stuff
 	ID3D11Device* dev;
 	ID3D11DeviceContext* devC;
-
+	
+	//game stuff
+	Dimension cDimension;
+	PUZZLE_PHASE cPhase;
+	
+	bool holdingKeyPressed;
+	bool realmKeyPressed;
+	void switchRealm();
 public:
 	
 	Player();
@@ -29,13 +36,18 @@ public:
 	void update(void);
 	void draw(void);
 	void handleWallCollision(std::vector<DirectX::BoundingOrientedBox> targets);
+	int synchKey();
 	//Get
+	Dimension getCurrentDimension() const;
+	PUZZLE_PHASE getCurrentLevelPhase() const;
+	bool getKeyPressed();
 	Camera* getCam(void);
 	WandModel* getWand(void);
 	DirectX::BoundingOrientedBox* getAvatar();
+	  
 	//Set
-
-
+	void setCurrentDimension(const Dimension &in_dim);
+	void setCurrentLevelPhase(const PUZZLE_PHASE &in_phase);
 
 };
 #endif // !PLAYER_H

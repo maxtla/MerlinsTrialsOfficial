@@ -14,7 +14,7 @@ void LevelOne::Update()
 {
 	m_level->Update(m_player);
 	pWallManager->Update();
-
+	this->pCubemanager->update();
 	//update player last
 	m_player->update();
 }
@@ -23,6 +23,8 @@ void LevelOne::Draw()
 {
 	m_level->Draw(m_player->getCam()->getView(), m_player->getCam()->getProjection());
 	m_player->draw();
+	this->pCubemanager->Draw(m_player->getCam()->getProjection(), m_player->getCam()->getView());
+
 #ifndef NDEBUG
 	DebugInformation2D::cameraPosToScreen(pD2D, m_player->getCam()->getCamPos());
 	DebugInformation2D::FPStoScreen(pD2D, lastFPSCount);
@@ -50,6 +52,7 @@ bool LevelOne::initialize(ID3D11Device* in_device, ID3D11DeviceContext* in_devic
 	//load in the level1 mesh
 	std::vector<Mesh*> levelMesh;
 	int tryCount = 0;
+
 RetryPoint:
 	if (!m_importer.importLevel(LEVEL_ONE, levelMesh, in_device, in_deviceContext) && tryCount < 5)
 	{
@@ -67,6 +70,10 @@ RetryPoint:
 	m_level = new Level();
 	m_level->initialize(levelMesh, m_basicShader);
 	
+
+	this->pCubemanager = new CubeManager();
+	this->pCubemanager->initialize(in_deviceContext, in_device, this->m_player);
+
 	//free the vector (only the pointers) --- the level class destructor will delete the Mesh instances
 	
 	//-----INITIALIZE MANAGERS-----

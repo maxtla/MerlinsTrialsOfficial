@@ -7,6 +7,11 @@ ModelBase::~ModelBase()
 {
 }
 
+void ModelBase::setVisisble(const bool & in_value)
+{
+	this->isVisible = in_value;
+}
+
 void ModelBase::setWorldMatrix(const DirectX::XMMATRIX & in_wMatrix)
 {
 	this->wMatrix = in_wMatrix;
@@ -28,5 +33,10 @@ void ModelBase::createOBBS()
 DirectX::XMMATRIX ModelBase::getWorld() const
 {
 	return this->wMatrix;
+}
+
+bool ModelBase::getVisisble() const
+{
+	return this->isVisible;
 }
 

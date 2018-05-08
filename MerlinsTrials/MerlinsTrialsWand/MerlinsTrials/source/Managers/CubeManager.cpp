@@ -121,9 +121,9 @@ void CubeManager::updateCube(const int & n)
 {
 	CubeModel * model = m_cubes[n];
 	XMFLOAT3 xmf = pCam->getCamPos();
-	//Vector3 vec3 = -pCam->getCamForward() * Vector3(5.f, 5.f, 5.f);
-	//Vector3 vec = DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&vec3), DirectX::XMLoadFloat3(&xmf));
-	Vector3 vec = Vector3(0.0f, 0.0f, -3.0f);
+	Vector3 vec3 = -pCam->getCamForward() * Vector3(5.f, 5.f, 5.f);
+	Vector3 vec = DirectX::XMVectorAdd(DirectX::XMLoadFloat3(&vec3), DirectX::XMLoadFloat3(&xmf));
+	//Vector3 vec = Vector3(0.0f, 0.0f, -3.0f);
 
 	XMMATRIX newW = XMMatrixIdentity();
 	//XMMATRIX rot = XMMatrixRotationRollPitchYaw(this->pCam->getCamPitch(), 0.0f, 0.0f);
@@ -132,7 +132,7 @@ void CubeManager::updateCube(const int & n)
 
 	XMMATRIX invView = XMMatrixInverse(&XMMatrixDeterminant(this->pCam->getView()), this->pCam->getView());
 
-	newW =  transl * invView;
+	newW = transl; // *invView;
 	model->setWorldMatrix(newW);
 }
 
@@ -146,8 +146,8 @@ int CubeManager::checkCollision()
 	for (auto var : this->m_cubes)
 	{
 		DirectX::BoundingOrientedBox box = var->getBoundingBox();
-		box.Transform(box, var->getWorld());
-		//camPos = DirectX::XMVector3Transform(camPos, DirectX::XMMatrixInverse(&DirectX::XMMatrixDeterminant(var->getWorld()), var->getWorld()));
+		//box.Transform(box, var->getWorld());
+		camPos = DirectX::XMVector3Transform(camPos, DirectX::XMMatrixInverse(&DirectX::XMMatrixDeterminant(var->getWorld()), var->getWorld()));
 		if (box.Intersects(-camPos, forwardVec, distance))
 		{
 			//Intersects

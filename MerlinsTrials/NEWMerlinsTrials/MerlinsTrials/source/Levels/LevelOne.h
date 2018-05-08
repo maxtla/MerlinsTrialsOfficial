@@ -8,6 +8,7 @@
 #include "..\Helpers\AssetsPaths.h"
 #include "..\Engines\Direct2DEngine.h"
 #include "..\Managers\WallManager.h"
+#include "..\Managers\CubeManager.h"
 #include "Level.h"
 
 #include <string>
@@ -24,6 +25,7 @@ private:
 
 	//My managers
 	WallManager * pWallManager = nullptr;
+	CubeManager * pCubemanager = nullptr;
 
 
 	//debug stuff

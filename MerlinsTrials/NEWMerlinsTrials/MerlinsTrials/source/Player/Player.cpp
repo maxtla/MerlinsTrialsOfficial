@@ -116,9 +116,13 @@ RetryPoint:
 	this->avatar = new DirectX::BoundingOrientedBox();
 	this->avatar->Extents = DirectX::XMFLOAT3(.1f, .1f, .1f);
 	this->avatar->Center = this->cam->getCamPos();
+
+	this->cDimension = Dimension::NORMAL;
+	this->cPhase = PUZZLE_PHASE::FIRST;
 }
 
-void Player::update(void) {
+void Player::update(void) 
+{
 
 	//Update camera
 	this->cam->update();
@@ -126,12 +130,58 @@ void Player::update(void) {
 	//Update wand
 	this->wand->update(this->cam->getView());
 
+
+	
+
+	if (GetAsyncKeyState(VK_SPACE))
+	{
+		if (!this->realmKeyPressed)
+		{
+			this->realmKeyPressed = true;
+			this->switchRealm();
+		}
+
+	}
+	else if (this->realmKeyPressed)
+	{
+		this->realmKeyPressed = false;
+	}
+
+}
+
+void Player::switchRealm()
+{
+	switch (this->cDimension)
+	{
+	case Dimension::NORMAL:
+		cDimension = Dimension::OTHER;
+		break;
+
+	case Dimension::OTHER:
+		cDimension = Dimension::NORMAL;
+		break;
+	}
 }
 
 void Player::draw() {
 
 	this->wand->draw(this->cam->getView(), this->cam->getProjection());
 
+}
+
+Dimension Player::getCurrentDimension() const
+{
+	return this->cDimension;
+}
+
+PUZZLE_PHASE Player::getCurrentLevelPhase() const
+{
+	return this->cPhase;
+}
+
+bool Player::getKeyPressed()
+{
+	return this->holdingKeyPressed;
 }
 
 ////////////////////////////////GET////////////////////////////////////////////
@@ -186,7 +236,36 @@ void Player::handleWallCollision(std::vector<DirectX::BoundingOrientedBox> targe
 	this->cam->setCameraPosition(pos);
 }
 
+int Player::synchKey()
+{
+		if (GetAsyncKeyState(KEY::E))
+		{
+			if (!this->holdingKeyPressed)
+			{
+				this->holdingKeyPressed = true;
+				return 1;
+			}
+		}
+		else if (this->holdingKeyPressed)
+		{
+			this->holdingKeyPressed = false;
+
+		}
+	return 0;
+}
+
 DirectX::BoundingOrientedBox* Player::Player::getAvatar()
 {
 	return this->avatar;
 }
+
+void Player::setCurrentDimension(const Dimension & in_dim)
+{
+	this->cDimension = in_dim;
+}
+
+void Player::setCurrentLevelPhase(const PUZZLE_PHASE & in_phase)
+{
+	this->cPhase = in_phase;
+}
+

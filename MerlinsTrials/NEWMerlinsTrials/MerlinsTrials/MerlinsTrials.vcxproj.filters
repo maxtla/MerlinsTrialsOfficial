@@ -150,6 +150,15 @@
     <ClInclude Include="source\Player\Interaction.h">
       <Filter>Player</Filter>
     </ClInclude>
+    <ClInclude Include="source\Objects\PedestalModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Managers\CubeManager.h">
+      <Filter>Managers</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Objects\CubeModel.h">
+      <Filter>Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -229,6 +238,15 @@
     </ClCompile>
     <ClCompile Include="source\Player\Interaction.cpp">
       <Filter>Player</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\CubeModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Objects\PedestalModel.cpp">
+      <Filter>Objects</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Managers\CubeManager.cpp">
+      <Filter>Managers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

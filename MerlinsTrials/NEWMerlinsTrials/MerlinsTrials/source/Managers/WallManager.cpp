@@ -25,7 +25,7 @@ bool WallManager::initialize(std::vector<Mesh*> &levelMeshes, ID3D11DeviceContex
 	std::vector<Mesh*> walls;
 	for (auto var : levelMeshes)
 	{
-		if (var->getName() == "Wall" || var->getName() == "WallO" ||)
+		if (var->getName() == "Wall" || var->getName() == "WallO")
 		{
 			pWall = new WallModel(DirectX::XMMatrixIdentity());
 			walls.push_back(var);

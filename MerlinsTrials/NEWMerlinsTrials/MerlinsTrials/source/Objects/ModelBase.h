@@ -25,10 +25,12 @@ public:
 
 	virtual ~ModelBase();
 
+	void setVisisble(const bool &in_value);
 	void setWorldMatrix(const DirectX::XMMATRIX &in_wMatrix);
 	void setMeshes(std::vector<Mesh*> meshes) { this->m_Meshes = meshes; }
 	void createOBBS();
 	DirectX::XMMATRIX getWorld() const;
 	std::vector<Mesh*> getMeshes() const { return m_Meshes; }
+	bool getVisisble() const;
 };
 #endif // !MODELBASE_H
