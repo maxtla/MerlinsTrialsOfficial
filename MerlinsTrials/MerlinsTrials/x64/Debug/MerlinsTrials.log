@@ -1,0 +1,65 @@
+﻿  Main.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  Collision.cpp
+  SoundEngine.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\engines\soundengine.h(4): fatal error C1083: Cannot open include file: 'SFML\Audio.hpp': No such file or directory
+  Mesh.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(116): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(121): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(126): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(131): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(136): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(141): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(146): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(151): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(156): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(190): warning C4267: '=': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(249): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\mesh.cpp(276): warning C4267: 'argument': conversion from 'size_t' to 'UINT', possible loss of data
+  ObjectImporter.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  Level.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  LevelOne.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  LevelState.cpp
+  LevelTimer.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\levels\leveltimer.cpp(98): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  LoadingScreen.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  CubeManager.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  MenuManager.cpp
+  WallManager.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  Background.cpp
+  CubeModel.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  GateModel.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  ModelBase.cpp
+  PedestalModel.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  RockModel.cpp
+  TerrainModel.cpp
+  Generating Code...
+  Compiling...
+  WallModel.cpp
+  WandModel.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\objects\wandmodel.cpp(82): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\objects\wandmodel.cpp(88): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\objects\wandmodel.cpp(93): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\objects\wandmodel.cpp(98): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\objects\wandmodel.cpp(118): warning C4305: 'argument': truncation from 'double' to 'float'
+  Camera.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\player\camera.cpp(169): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\player\camera.cpp(172): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\player\camera.cpp(173): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\player\camera.cpp(181): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Inventory.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  Player.cpp
+c:\users\its me\desktop\redovisning\new folder1\merlinstrials\merlinstrials\source\importer\objectimporter.h(3): fatal error C1083: Cannot open include file: 'assimp\Importer.hpp': No such file or directory
+  BasicShader.cpp
+  NormalMapShader.cpp
+  Generating Code...
