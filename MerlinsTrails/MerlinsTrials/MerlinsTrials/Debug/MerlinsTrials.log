@@ -1,0 +1,27 @@
+﻿  Main.cpp
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\main.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\main.cpp(145): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\main.cpp(158): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\main.cpp(173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  LevelManager.cpp
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+  LevelOne.cpp
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\levels\levelone.cpp(168): warning C4316: 'LoadingScreen': object allocated on the heap may not be aligned 16
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\levels\levelone.cpp(173): warning C4316: 'CubeManager': object allocated on the heap may not be aligned 16
+  CubeManager.cpp
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(133): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(134): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(135): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(136): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(678): warning C4018: '<': signed/unsigned mismatch
+c:\users\test\source\repos\new folder2\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(768): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
+  MerlinsTrials.vcxproj -> C:\Users\test\source\repos\New folder2\MerlinsTrials\Debug\MerlinsTrials.exe
