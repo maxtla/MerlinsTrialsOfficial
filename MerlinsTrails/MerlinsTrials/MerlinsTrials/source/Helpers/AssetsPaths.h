@@ -35,9 +35,9 @@
 #define MERLIN_SONG_PATH ".//Assets//Sounds//Merlin 3.ogg"
 #define AMBIENT_PATH ".//Assets//Sounds//Fågelkvitter.ogg"
 #define GATE_SOUND_PATH ".//Assets//Sounds//Gate.wav"
-#define FOOTSTEPS_SOUND_PATH ".//Assets//Sounds//footsteps.wav"
-#define PICKUP_SOUND_PATH ".//Assets//Sounds//Pickup.wav"
+#define FOOTSTEPS_SOUND_PATH ".//Assets//Sounds//Footsteps2.wav"
+#define PICKUP_SOUND_PATH ".//Assets//Sounds//WandSound.wav"
 #define FADE_SOUND_PATH "./Assets//Sounds//Wee.wav"
-#define PUT_DOWN_SOUND_PATH "./Assets//Sounds//PutDown.wav"
+#define PUT_DOWN_SOUND_PATH "./Assets//Sounds//PutDown2.wav"
 
 #endif // !_ASSETS_PATHS_H

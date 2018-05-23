@@ -35,7 +35,7 @@ private:
 	DirectX::XMMATRIX standardMatrix;
 	DirectX::XMMATRIX animationMatrix;
 
-	SoundEngine* hej;
+	/*SoundEngine* hej;*/
 
 	//Private functions
 	void followPlayer(DirectX::XMMATRIX view);
@@ -52,7 +52,7 @@ public:
 	void update(DirectX::XMMATRIX view);
 	void animation();
 	void pickupAnimation();
-	void resertPickupTimer();
+	void resetPickupTimer();
 	//Get
 	Vector3 getPos(void) const;
 	int getNrOfMeshes(void) const;

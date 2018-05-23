@@ -44,10 +44,10 @@ Camera::Camera()
 
 	this->walkingSound = new SoundEngine();
 	this->walkingSound->loadSound(FOOTSTEPS_SOUND_PATH);
-	this->walkingSound->playSound();
+	//this->walkingSound->playSound();
 	this->walkingSound->loopSound(true);
-	this->walkingSound->pauseSound();
-	this->walkingSound->setSoundVolume(35);
+	//this->walkingSound->pauseSound();
+	this->walkingSound->setSoundVolume(50);
 }
 
 
@@ -194,31 +194,35 @@ void Camera::update()
 		{
 			m_camPos += m_camForward * m_moveSpeed * dt;
 			m_target += m_camForward * m_moveSpeed * dt;
-			this->walkingSound->resumeSound();
+			if(this->walkingSound->isPlaying() == false)
+				this->walkingSound->playSound();
 		}
 		if (GetAsyncKeyState(KEY::S))
 		{
 			m_camPos -= m_camForward * m_moveSpeed * dt;
 			m_target -= m_camForward * m_moveSpeed * dt;
-			this->walkingSound->resumeSound();
+			if(this->walkingSound->isPlaying() == false)
+			this->walkingSound->playSound();
 		}
 		if (GetAsyncKeyState(KEY::D))
 		{
 			m_camPos += m_right * m_moveSpeed * dt;
 			m_target += m_right * m_moveSpeed * dt;
-			this->walkingSound->resumeSound();
+			if(this->walkingSound->isPlaying() == false)
+			this->walkingSound->playSound();
 		}
 		if (GetAsyncKeyState(KEY::A))
 		{
 			m_camPos -= m_right * m_moveSpeed * dt;
 			m_target -= m_right * m_moveSpeed * dt;
-			this->walkingSound->resumeSound();
+			if(this->walkingSound->isPlaying() == false)
+			this->walkingSound->playSound();
 		}
 
 		if (!GetAsyncKeyState(KEY::W) && !GetAsyncKeyState(KEY::S)
 			&& !GetAsyncKeyState(KEY::D) && !GetAsyncKeyState(KEY::A))
 		{
-			this->walkingSound->pauseSound();
+			this->walkingSound->stopSound();
 		}
 		m_yaw -= mouseX * m_rotationalOffset * dt;
 		m_pitch -= mouseY * m_rotationalOffset * dt;

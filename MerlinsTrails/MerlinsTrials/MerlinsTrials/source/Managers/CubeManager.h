@@ -29,6 +29,7 @@ private:
 	ObjectImporter importer;
 	LevelState* state;		
 	SoundEngine* putDownSound;
+	SoundEngine* pickupSound;
 	int eraseId;
 	bool cubeIsAboutToBeErased;
 	Timer eraseDelay;

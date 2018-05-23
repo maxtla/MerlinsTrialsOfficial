@@ -18,7 +18,7 @@ WandModel::~WandModel() {
 	for (size_t i = 0; i < m_Meshes.size(); i++)
 		delete m_Meshes[i];
 	m_Meshes.clear();
-	delete this->hej;
+	/*delete this->hej;*/
 }
 
 ///////////////////////////////////MISC//////////////////////////////////////
@@ -46,9 +46,9 @@ void WandModel::init(std::vector<Mesh*> meshes, BasicShader* basicS, ID3D11Devic
 	this->aniTime.startTimer();
 	this->pickupTime.startTimer();
 	
-	hej = new SoundEngine();
-	hej->loadSound(".//Assets//Sounds//bomb.wav");
-	hej->setSoundVolume(5);
+	/*hej = new SoundEngine();
+	hej->loadSound(".//Assets//Sounds//Trollstav3.wav");
+	hej->setSoundVolume(50);*/
 }
 
 void WandModel::draw(DirectX::XMMATRIX view, DirectX::XMMATRIX projection) {
@@ -138,7 +138,7 @@ void WandModel::pickupAnimation()
 		this->wandGoingUp = false;
 		this->pickupTime.reset();
 		
-		hej->playSound();
+		/*hej->playSound();*/
 	}
 	
 	if(wandGoingUp == false && this->pickupTime.frameDiff() < 200)
@@ -154,7 +154,7 @@ void WandModel::pickupAnimation()
 	}	
 }
 
-void WandModel::resertPickupTimer()
+void WandModel::resetPickupTimer()
 {
 	this->pickupTime.reset();
 }

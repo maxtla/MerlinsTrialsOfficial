@@ -10,6 +10,7 @@ CubeManager::~CubeManager()
 
 	delete this->m_BasicShader;
 	delete this->m_NormalMapShader;	
+	delete this->pickupSound;
 	delete this->putDownSound;
 
 	this->m_BasicShader = nullptr;
@@ -39,7 +40,11 @@ bool CubeManager::initialize(ID3D11DeviceContext * pDevCon, ID3D11Device * pDev,
 	//Init sound
 	this->putDownSound = new SoundEngine();
 	this->putDownSound->loadSound(PUT_DOWN_SOUND_PATH);
-	this->putDownSound->setSoundVolume(50);
+	this->putDownSound->setSoundVolume(30);
+
+	this->pickupSound = new SoundEngine();
+	this->pickupSound->loadSound(PICKUP_SOUND_PATH);
+	this->pickupSound->setSoundVolume(30);
 
 	this->eraseId = -1;
 	this->cubeIsAboutToBeErased = false;
@@ -646,6 +651,8 @@ int CubeManager::checkCollision()
 					model = this->pPlayer->getInventory()->removeCube(id);
 					if (model != nullptr)
 					{
+						this->pPlayer->getWand()->resetPickupTimer();
+						this->pPlayer->getWand()->setInPickupAnimation(true);
 
 						XMMATRIX pWorld;
 						for (auto var : this->m_ForestPedestals)
@@ -667,7 +674,7 @@ int CubeManager::checkCollision()
 
 						model->setWorld(pos);
 						model->setOnPedistal(true);
-						this->m_ForestCubes.push_back(model);
+						this->m_ForestCubes.push_back(model);						
 						this->putDownSound->playSound();
 					}
 				}
@@ -679,9 +686,10 @@ int CubeManager::checkCollision()
 				{
 					if (this->m_ForestCubes.at(i)->getID() == id)
 					{
+						this->pickupSound->playSound();
 						model = this->m_ForestCubes[i];						
 						this->pPlayer->getInventory()->addCube(model);
-						this->pPlayer->getWand()->resertPickupTimer();
+						this->pPlayer->getWand()->resetPickupTimer();
 						this->pPlayer->getWand()->setInPickupAnimation(true);						
 						this->eraseId = i;
 						this->cubeIsAboutToBeErased = true;
@@ -736,6 +744,8 @@ int CubeManager::checkCollision()
 					model = this->pPlayer->getInventory()->removeCube(id);
 					if (model != nullptr)
 					{
+						this->pPlayer->getWand()->resetPickupTimer();
+						this->pPlayer->getWand()->setInPickupAnimation(true);
 
 						XMMATRIX pWorld;
 						for (auto var : this->m_LabyrinthPedestals)
@@ -769,6 +779,7 @@ int CubeManager::checkCollision()
 				{
 					if (this->m_LabyrinthCubes.at(i)->getID() == id)
 					{
+						this->pickupSound->playSound();
 						model = this->m_LabyrinthCubes[i];
 						this->eraseId = i;
 						this->cubeIsAboutToBeErased = true;		
@@ -777,7 +788,7 @@ int CubeManager::checkCollision()
 					}
 				}
 				this->pPlayer->getInventory()->addCube(model);
-				this->pPlayer->getWand()->resertPickupTimer();
+				this->pPlayer->getWand()->resetPickupTimer();
 				this->pPlayer->getWand()->setInPickupAnimation(true);				
 			}
 			break;
