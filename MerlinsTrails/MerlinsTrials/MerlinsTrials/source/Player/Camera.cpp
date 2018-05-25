@@ -47,7 +47,7 @@ Camera::Camera()
 	//this->walkingSound->playSound();
 	this->walkingSound->loopSound(true);
 	//this->walkingSound->pauseSound();
-	this->walkingSound->setSoundVolume(50);
+	this->walkingSound->setSoundVolume(5);
 }
 
 

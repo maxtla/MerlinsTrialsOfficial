@@ -40,11 +40,11 @@ bool CubeManager::initialize(ID3D11DeviceContext * pDevCon, ID3D11Device * pDev,
 	//Init sound
 	this->putDownSound = new SoundEngine();
 	this->putDownSound->loadSound(PUT_DOWN_SOUND_PATH);
-	this->putDownSound->setSoundVolume(30);
+	this->putDownSound->setSoundVolume(18);
 
 	this->pickupSound = new SoundEngine();
 	this->pickupSound->loadSound(PICKUP_SOUND_PATH);
-	this->pickupSound->setSoundVolume(30);
+	this->pickupSound->setSoundVolume(40);
 
 	this->eraseId = -1;
 	this->cubeIsAboutToBeErased = false;
@@ -674,7 +674,8 @@ int CubeManager::checkCollision()
 
 						model->setWorld(pos);
 						model->setOnPedistal(true);
-						this->m_ForestCubes.push_back(model);						
+						this->m_ForestCubes.push_back(model);	
+						//this->pickupSound->playSound();
 						this->putDownSound->playSound();
 					}
 				}
@@ -768,6 +769,7 @@ int CubeManager::checkCollision()
 						model->setWorld(pos);
 						model->setOnPedistal(true);//
 						this->m_LabyrinthCubes.push_back(model);
+						//this->pickupSound->playSound();
 						this->putDownSound->playSound();
 					}
 				}

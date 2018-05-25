@@ -32,12 +32,13 @@
 #define LOADING0 L".//Assets//Loading//loadingScreen.png"
 #define LOADING1 L".//Assets//Loading//loadingScreen1.png"
 
-#define MERLIN_SONG_PATH ".//Assets//Sounds//Merlin 3.ogg"
-#define AMBIENT_PATH ".//Assets//Sounds//Fågelkvitter.ogg"
+#define MERLIN_SONG_PATH ".//Assets//Sounds//Merlin.ogg"
+#define AMBIENT_PATH ".//Assets//Sounds//Birds.ogg"
 #define GATE_SOUND_PATH ".//Assets//Sounds//Gate.wav"
-#define FOOTSTEPS_SOUND_PATH ".//Assets//Sounds//Footsteps2.wav"
+#define FOOTSTEPS_SOUND_PATH ".//Assets//Sounds//Footsteps.wav"
 #define PICKUP_SOUND_PATH ".//Assets//Sounds//WandSound.wav"
-#define FADE_SOUND_PATH "./Assets//Sounds//Wee.wav"
-#define PUT_DOWN_SOUND_PATH "./Assets//Sounds//PutDown2.wav"
+#define FADE_SOUND_PATH ".//Assets//Sounds//Wee.wav"
+#define PUT_DOWN_SOUND_PATH ".//Assets//Sounds//PutDown.wav"
+#define ROOT_SOUND_PATH ".//Assets//Sounds//Root.wav"
 
 #endif // !_ASSETS_PATHS_H

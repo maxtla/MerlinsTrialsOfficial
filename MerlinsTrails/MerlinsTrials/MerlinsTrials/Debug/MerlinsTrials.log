@@ -1,59 +1,57 @@
-﻿  Camera.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(178): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(181): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(190): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-  Generating Code...
-  Compiling...
-  Player.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(35): warning C4018: '<': signed/unsigned mismatch
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(114): warning C4316: 'WandModel': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(276): warning C4018: '<': signed/unsigned mismatch
-  Inventory.cpp
-  GateModel.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.cpp(125): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-  CubeModel.cpp
-  WallManager.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\wallmanager.cpp(33): warning C4316: 'WallModel': object allocated on the heap may not be aligned 16
-  CubeManager.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(138): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(139): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(140): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(141): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(685): warning C4018: '<': signed/unsigned mismatch
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(778): warning C4018: '<': signed/unsigned mismatch
-  LoadingScreen.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(76): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(77): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(78): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(79): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(88): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(107): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
-  LevelTimer.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\leveltimer.cpp(98): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
-  LevelState.cpp
-  LevelOne.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\levelone.cpp(168): warning C4316: 'LoadingScreen': object allocated on the heap may not be aligned 16
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\levelone.cpp(173): warning C4316: 'CubeManager': object allocated on the heap may not be aligned 16
-  LevelManager.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Main.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\main.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\main.cpp(145): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\main.cpp(158): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\main.cpp(173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Level.cpp
-  Main.cpp
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\main.cpp(140): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\main.cpp(145): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\main.cpp(158): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\main.cpp(173): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  LevelManager.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+  LevelOne.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\levelone.cpp(168): warning C4316: 'LoadingScreen': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\levelone.cpp(173): warning C4316: 'CubeManager': object allocated on the heap may not be aligned 16
+  LevelState.cpp
+  LevelTimer.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\leveltimer.cpp(98): warning C4244: '+=': conversion from 'double' to 'float', possible loss of data
+  LoadingScreen.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(76): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(77): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(78): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(79): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(88): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(107): warning C4244: '-=': conversion from 'double' to 'float', possible loss of data
+  CubeManager.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(138): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(139): warning C4316: 'CubeModel': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(140): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(141): warning C4316: 'PedestalModel': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(686): warning C4018: '<': signed/unsigned mismatch
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\cubemanager.cpp(780): warning C4018: '<': signed/unsigned mismatch
+  WallManager.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\managers\wallmanager.cpp(33): warning C4316: 'WallModel': object allocated on the heap may not be aligned 16
+  CubeModel.cpp
+  GateModel.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(49): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(50): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.h(51): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\objects\gatemodel.cpp(125): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(178): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(181): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(182): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\camera.cpp(190): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  Inventory.cpp
+  Player.cpp
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(35): warning C4018: '<': signed/unsigned mismatch
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(114): warning C4316: 'WandModel': object allocated on the heap may not be aligned 16
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\player\player.cpp(276): warning C4018: '<': signed/unsigned mismatch
   Generating Code...
-c:\users\sebbedelius\documents\github\merlinstrialsofficial\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(50): warning C4715: 'LoadingScreen::clamp': not all control paths return a value
-  MerlinsTrials.vcxproj -> C:\Users\Sebbedelius\Documents\GitHub\MerlinsTrialsOfficial\MerlinsTrails\MerlinsTrials\Debug\MerlinsTrials.exe
+c:\users\test\documents\github\merlinstrialsofficial\merlinstrials\merlin's trials\merlinstrails\merlinstrials\merlinstrials\source\levels\loadingscreen.cpp(50): warning C4715: 'LoadingScreen::clamp': not all control paths return a value
+  MerlinsTrials.vcxproj -> C:\Users\test\Documents\GitHub\MerlinsTrialsOfficial\MerlinsTrials\Merlin's Trials\MerlinsTrails\MerlinsTrials\Debug\MerlinsTrials.exe
